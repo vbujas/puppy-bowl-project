@@ -1,0 +1,179 @@
+<!-- Modal -->
+<!-- <div class="modal fade" id="sign-up-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-7 col-sm-7 col-xs-7 text-center col-centered">
+          <p class="welcome-to fancy"><span>welcome to</span></p>
+          <p class="fantasy-draft">fantasy draft</p>
+          <hr class="green-line"> -->
+          <div id="create-user">
+              <div id="sign-up-form">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, :html => { id: 'sign_up' }) do |f| %>
+                  <%# if resource.errors.any? %>
+                    <!-- <div id="error_explanation"> -->
+                      <%# resource.errors.full_messages.each do |msg| %>
+                        <!-- <p class="bg-danger"><%#= msg %></p> -->
+                      <%# end %>
+                    <!-- </div> -->
+                  <%# end %>
+                  <div class="text-center">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group field">
+                          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group field">
+                          <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Last Name" %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group field">
+                      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail" %>
+                    </div>
+                    <!-- <div class="form-group field"> -->
+                      <div class="row">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                          <span class="btn btn-success fileinput-button" id="clickme" style="width:100%;">
+                           <i class="icon-plus icon-white"></i>
+                           <span>Upload Photo</span>
+                            </span>
+                             <%= f.hidden_field :image_url, style: "display:none; margin-bottom:10px"  %>
+                             <%= file_field_tag :avatar_real, style: "display:none; margin-bottom:10px" %>
+                         </div>
+                       <div class="col-md-5 col-sm-5 col-xs-5"> <img src="http://placehold.it/80x80" style="max-width:80px;max:height:80px"  id="avatar_preview" class="pull-right" /> </div>
+                      </div>
+                      <!-- </div> -->
+                      <div class="form-group field">
+                        <% if @validatable %>
+                          <em>(<%= @minimum_password_length %> characters minimum)</em>
+                        <% end %>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+                      </div>
+                      <div class="form-group field">
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
+                      </div>
+                      <div class="form-group field">
+                        <p class="receive">Would you like to receive future updates from <span>animalplanet.com</span>?</p>
+                        <a href="http://corporate.discovery.com/privacy-policy/" target="_blank">Here’s our Privacy Policy.</a>
+                      </div>
+                      <div class="form-group field">
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" checked> YES
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0"> NO
+                        </label>
+                      </div>
+                      <div class="form-group field">
+                        <%= f.select :video_provider, VideoProvider.all.collect {|p| p.name}, { prompt: "Video Provider" }, { class: "form-control" } %>
+                      </div>
+                      <%= f.submit "Sign up", class: "btn btn-lg btn-success" %>
+                  </div>
+              <% end %>
+              </div>
+          </div>
+<!--         </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<script>
+   $('#clickme').click(function() {
+    $('#avatar_real').click();
+    $('#user_avatar_real').click();
+  });  
+  // document.getElementById("select-upload-photo").onchange = function () {
+  //  document.getElementById("select-upload-photo").value = this.value;
+  // };
+ console.log(' before ready...');
+$(document).ready(function() {
+    console.log('ready...');
+$('form').find("input:file").each(function(i, elem) {
+ 
+var fileInput = $(elem);
+
+ console.log(' registering upload for...' + fileInput.attr('id'));
+var form = $(fileInput.parents('form:first'));
+var submitButton = form.find('input[type="submit"]');
+var progressBar = $("<div  class='bar' align='center'></div>");
+var barContainer = $("<div class='progress' style='margin-top:5px' ></div>").append(progressBar);
+fileInput.after(barContainer);
+
+fileInput.fileupload({
+  fileInput: fileInput,
+    add: function(e, data) {
+                var uploadErrors = [];
+                var acceptFileTypes = /^image\/(gif|jpe?g|png)$/i;
+
+                if(data.originalFiles[0]['type'].length && !acceptFileTypes.test(data.originalFiles[0]['type'])) {
+                    uploadErrors.push('Not an accepted file type');
+                }
+                if( data.originalFiles[0]['size'] > 500000) {
+                    uploadErrors.push('Filesize is too big');
+                    console.log('size'+data.originalFiles[0]['size'])
+
+                }
+                if(uploadErrors.length > 0) {
+                    alert(uploadErrors.join("\n"));
+                } else {
+                    data.submit();
+                }
+        },  
+
+url: '<%= @s3_direct_post.url if @s3_direct_post %>',
+type: 'POST',
+autoUpload: true,
+acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+maxFileSize: 5000,
+formData: <%= @s3_direct_post.fields.to_json.html_safe if @s3_direct_post %>,
+paramName: 'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
+dataType: 'XML', // S3 returns XML if success_action_status is set to 201
+replaceFileInput: false,
+progressall: function (e, data) {
+var progress = parseInt(data.loaded / data.total * 100, 10);
+progressBar.css('width', progress + '%')
+},
+start: function (e) {
+console.log('Started');
+submitButton.prop('disabled', true);
+ 
+progressBar.
+css('background', 'green').
+css('display', 'block').
+css('width', '0%').
+text("Loading...");
+},
+done: function(e, data) {
+console.log('Done');
+submitButton.prop('disabled', false);
+progressBar.text("Uploading done");
+ 
+// extract key and generate URL from response
+var key = $(data.jqXHR.responseXML).find("Key").text();
+var url = '//<%= @s3_direct_post.url.host if @s3_direct_post %>/' + key;
+// create hidden field
+var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
+
+ $('#avatar_preview').attr('src', url)
+ $('#user_image_url').val(url)
+ console.log(url)
+  
+
+},
+fail: function(e, data) {
+console.log("Failed");
+progressBar.
+css("background", "red").
+text("Failed");
+}
+});
+});
+});
+</script>

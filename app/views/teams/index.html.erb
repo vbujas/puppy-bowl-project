@@ -1,0 +1,60 @@
+<h2>Teams</h2>
+<div class="col-md-8">
+<strong style="color:#1d6D19; font-size:24px;"> <%= Team.all.length %>  teams created so far </strong>
+</div>
+<div class="col-md-8" align="center">
+<%= will_paginate @posts %>
+</div>
+<div class="col-md-8">
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Belongs to user</th>
+      <th>provider</th>
+        <th> Pup No 1 </th>
+        <th> Pup No 2 </th>
+        <th> Pup No 3 </th>
+      <th> remove a team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <% 
+      if   @u = User.find_by_id(team.user_id) 
+           @u == nil ? fname = 'user does not exist' : fname = @u.first_name
+           @u == nil ? eml = 'user does not exist' : eml = @u.email
+           @u == nil ? provider = 'user does not exist' : provider = @u.provider
+
+       else
+          fname = 'user does not exist'  
+          eml = 'user does not exist'
+          provider = 'none'
+        end
+        
+
+      %>
+      <%  @p1 =   Puppy.find_by_id(team.pup1)
+          @p2 =   Puppy.find_by_id(team.pup2)  
+          @p3 =   Puppy.find_by_id(team.pup3)    
+           @p1 == nil ? n1 = 'undefined' : n1 = @p1.name
+           @p2 == nil ? n2 = 'undefined' : n2 = @p2.name
+           @p3 == nil ? n3 = 'undefined' : n3 = @p3.name
+      %>
+
+      <tr>
+        <td><%= fname %>'s team</td>
+        <td><%= eml %> </td>
+        <td><%= provider %> </td>
+        <td><%= n1  %></td>
+        <td><%= n2  %></td>
+        <td><%= n3  %></td>
+
+        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+

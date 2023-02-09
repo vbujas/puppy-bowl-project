@@ -1,0 +1,1557 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
+@font-face {
+  font-family: 'Cubano Regular';
+  src: url('cubano-regular-webfont.ttf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('Proxima-Nova-Bold.woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Black';
+  src: url('Proxima-Nova-Black.woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Alt Semibold';
+  src: url('Proxima-Nova-Alt-Semibold.woff');
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('MYRIAD-PRO-REGULAR.woff');
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix')
+        format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff')
+        format('woff'), url('/assets/glyphicons-halflings-regular.ttf')
+        format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular')
+        format('svg');
+}
+
+.container {
+  max-width: 700px;
+}
+
+body {
+  padding-top: 20px;
+  background: url('bg.png');
+  overflow-x:hidden;
+
+  /* Image is centered vertically and horizontally at all times */
+  background-position: center center;
+
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+
+  /* Makes the image fixed in the viewport so that it doesn't move when
+     the content height is greater than the image height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based on its container's size */
+  /*background-size: cover;*/
+  background-size: 100% 100%;
+}
+
+/*@media (max-width: 767px) {*/
+@media (min-height: 320px) and (max-width : 767px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 11px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 75px; }
+  .have-team a {
+    font-family: 'Proxima Nova Bold';
+    color: #f7ea48;
+  }
+  .welcome-to {
+    color: #358f23;
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+  }
+  .fantasy-draft {
+    color: #333333;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-family: 'Cubano Regular';
+  }
+  #create_team {
+    position: relative;
+    top: -12px;
+    padding-left: 50px;
+  }
+  .btn-social {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-size: 14px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .btn-email {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    background-color: #358f23;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    min-width: 82px;
+    /*width: 85%;*/
+    width: 100%;
+    max-width: 198%;
+    padding: 4px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  .welcome-text {
+    padding: 20px 0px 20px 0px;
+    color: #333;
+    font-size: 10px;
+    font-family: 'Proxima Nova Alt Semibold';
+  }
+  .formError {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .have-team-2 {
+    padding-top: 20px;
+    color: #358f23;
+    font-size: 15px;
+    font-family: 'Pacifico', cursive;
+  }
+  .fancy2 {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy2 span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy2 span:before,
+  .fancy2 span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 100%;
+    padding: 4px;
+  }
+  .fancy2 span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .fancy2 span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  .fancy2 span:before,
+  .fancy2 span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 18px;
+    padding: 2px;
+  }
+  .fancy2 span:before {
+    margin-right: 10px;
+  }
+  .fileinput-button span {
+    font-size: 10px;
+  }
+  .green-line {
+    height: 2px;
+    background-color: #358f23;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 260px;
+  }
+  .receive {
+    font-size: 10px;
+  }
+}
+
+
+@media (width: 375px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 6px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 8px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+  position: absolute;
+    top: 90px;
+    left: 75px;  }
+  .fantasy-draft {
+    color: #333333;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Cubano Regular';
+  }
+  .btn-social {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-size: 10px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .btn-email {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    background-color: #358f23;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 120%;
+    padding: 4px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 5px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 5px;
+  }
+  #create_team {
+    padding-left: 25px;
+  }
+}
+
+@media (width: 414px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 7px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 8px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+   position: absolute;
+    top: 40px;
+    left: 70px; 
+  }
+  .fantasy-draft {
+    color: #333333;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-family: 'Cubano Regular';
+  }
+  .btn-social {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-size: 12px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .btn-email {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    background-color: #358f23;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;
+  }
+/*  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 144%;
+    padding: 4px;
+  }*/
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    min-width: 50px;
+    /*width: 85%;*/
+    /*width: 100%;*/
+/*    max-width: 198%;
+    padding: 4px;*/
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 5px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 5px;
+  }
+  #create_team {
+    padding-left: 45px;
+  }
+  .green-line {
+    height: 2px;
+    background-color: #358f23;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 218px;
+  }
+}
+
+@media (width: 384px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+     position: absolute;
+    top: 90px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 20px;
+  }
+}
+
+@media (width: 320px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 8px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 7px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 25px;
+    left: 45px;
+  }
+  .fantasy-draft {
+    color: #333333;
+    font-size: 26px;
+    text-transform: uppercase;
+    font-family: 'Cubano Regular';
+  }
+  .btn-social {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-size: 10px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .btn-email {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    background-color: #358f23;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    /*width: 87%;*/
+    min-width: 0;
+    width: 90%;
+    /*max-width: 198%;*/
+    padding: 4px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 25px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 25px;
+  }
+  #create_team {
+    padding-left: 40px;
+  }
+}
+
+@media (width: 360px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 8px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 30px;
+    left: 50px;
+  }
+  #create_team {
+    padding-left: 40px;
+  }
+}
+
+@media (width: 604px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 65px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 55px;
+  }
+}
+
+
+@media (width: 600px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 65px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 55px;
+  }
+}
+
+
+@media (width: 424px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 0;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 35px;
+  }
+}
+
+@media (width: 540px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 0;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 75px;
+  }
+}
+
+@media (width: 720px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 16px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 0;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 16px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 120px;
+  }
+}
+
+@media (width: 400px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 0;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 75px;
+  }
+}
+
+@media (width: 640px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 60px;
+  }
+}
+
+@media (width: 480px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 7px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 55px;
+  }
+}
+
+@media (width: 213px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 0;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 75px;
+    left: 45px;
+  }
+}
+
+@media (width: 667px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 9px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 70px;
+    left: 85px;
+  }
+  #create_team {
+    padding-left: 65px;
+  }
+}
+
+@media (width: 736px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 20px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 70px;
+    left: 95px;
+  }
+  #create_team {
+    padding-left: 75px;
+  }
+}
+
+/*@media (width: 568px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 7px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 60px;
+    left: 70px;
+  }
+  #create_team {
+    padding-left: 65px;
+  }
+}*/
+
+@media (width: 533px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 7px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 13px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 70px;
+  }
+  #create_team {
+    padding-left: 65px;
+  }
+}
+
+@media (width: 424px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 11px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 7px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 90px;
+    left: 55px;
+  }
+  #create_team {
+    padding-left: 55px;
+  }
+}
+
+@media (width: 753px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 20px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 65px;
+    left: 100px;
+  }
+  #create_team {
+    padding-left: 75px;
+  }
+}
+
+@media (width: 569px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 10px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 60px;
+    left: 75px;
+  }
+  #create_team {
+    padding-left: 75px;
+  }
+}
+
+@media (width: 540px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 10px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 55px;
+    left: 58px;
+  }
+  #create_team {
+    padding-left: 75px;
+  }
+}
+
+@media (width: 720px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 25px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 65px;
+    left: 100px;
+  }
+  #create_team {
+    padding-left: 75px;
+  }
+}
+
+@media (width: 400px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 5px;
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 9px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 35px;
+    left: 60px;
+  }
+  #create_team {
+    padding-left: 50px;
+  }
+}
+
+@media (min-width: 578px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 17px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-bottom: 8px;
+    padding-left: 20px;
+  }
+
+
+  .welcome span {
+    font-family: 'Proxima Nova Bold';
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 15px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 65px;
+    left: 100px;
+  }
+  .have-team a {
+    font-family: 'Proxima Nova Bold';
+    color: #f7ea48;
+  }
+  .welcome-to {
+    color: #358f23;
+    font-size: 24px;
+    font-family: 'Pacifico', cursive;
+  }
+  .fantasy-draft {
+    color: #333333;
+    font-size: 46px;
+    text-transform: uppercase;
+    font-family: 'Cubano Regular';
+  }
+  #create_team {
+    position: relative;
+    top: -12px;
+  }
+  .btn-social {
+    max-width: 265px;
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-size: 15px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .btn-email {
+    width: 265px;
+    height: 45px;
+    background-color: #358f23;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #fff;
+    padding-left: 50px;
+  }
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 100%;
+    padding: 4px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 23px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 23px;
+  }
+  .welcome-text {
+    padding: 20px 0px 20px 0px;
+    color: #333;
+    font-size: 15px;
+    font-family: 'Proxima Nova Alt Semibold';
+  }
+  .formError {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .have-team-2 {
+    padding-top: 20px;
+    color: #358f23;
+    font-size: 22px;
+    font-family: 'Pacifico', cursive;
+  }
+  .fancy2 span:before,
+  .fancy2 span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    width: 18px;
+    padding: 4px;
+  }
+  .fancy2 span:before {
+    margin-right: 10px;
+  }
+  .fileinput-button span {
+    font-size: 12px;
+  }
+  .fancy2 {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy2 span {
+    display: inline-block;
+    position: relative;
+  }
+  .fancy2 span:before,
+  .fancy2 span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 2px solid #358f23;
+    top: 0;
+    max-width: 20px;
+    width: 100%;
+    padding: 4px;
+  }
+  .fancy2 span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .fancy2 span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  #create_team {
+    padding-left: 85px;
+  }
+  .green-line {
+    height: 2px;
+    background-color: #358f23;
+    margin-top: 0;
+    margin-bottom: 0;
+    min-width: 82px;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 577px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 40px;
+     
+  }
+
+
+  .welcome span {
+    font-family: 'Proxima Nova Bold';
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 60px;
+    left: 87px;
+  }
+}
+
+
+@media (max-width: 487px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-left: 20px;
+  }
+#create_team { 
+  padding-left:10px;
+}
+
+  .welcome span {
+    font-family: 'Proxima Nova Bold';
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 60px;
+    left:67px;
+  }
+}
+@media (max-width: 370px) {
+  .welcome {
+    color: #fdfdff;
+    font-family: 'Proxima Nova Black';
+    font-size: 8px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    padding: 0;
+    padding-bottom:6px;
+    padding-left: 5px;
+  }
+
+#create_team { 
+  padding-left:0px;
+  max-width: 160px;
+}
+
+  .welcome span {
+    font-family: 'Proxima Nova Bold';
+  }
+  .have-team {
+    color: #fff;
+    text-align: center;
+    font-family: 'Proxima Nova Bold';
+    font-size: 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 40px;
+    left: 22px;
+  }
+}
+
+p {
+  font-size: 15px;
+  margin: 0 0 10px;
+  font-family: 'Proxima Nova Alt Semibold';
+}
+
+.row {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-65 {
+  margin-bottom: 65px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.padding-left {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.padding-right {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+.nopadding {
+ padding: 0 !important;
+ margin: 0 !important;
+}
+
+.user-message {
+  color: #fae643;
+  font-size: 15px;
+  margin: 0 0 2px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+}
+
+.user-message span {
+  text-transform: uppercase;
+}
+
+.create-edit-block {
+  position: absolute;
+  top: 420px;
+  left: 240px;
+}
+
+/* modal */
+
+.modal-content {
+  border-radius: 0px;
+  max-width: 670px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.social-buttons {
+  max-width: 400px;
+  margin: 0 auto 10px;
+}
+
+.btn-social>:first-child {
+  border-right: 1px solid #b3bfd7;
+  padding-top: 5px;
+  width: 45px;
+  font-size: 1.4em;
+}
+
+.google-authorize { 
+   text-transform: uppercase;
+  font-size: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-google {
+  background-color: #dd4b39;
+}
+
+.btn-twitter {
+  background-color: #00aced;
+}
+
+.email-icon {
+  background: url('email_icon.png') no-repeat top left;
+  vertical-align:middle;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:hover, .btn:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.edit-picks {
+  color: #333333;
+  font-size: 15px;
+  text-decoration: underline;
+  font-family: 'Proxima Nova Alt Semibold';
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+}
+
+.formError {
+  color: red;
+}
+
+/* end modal */
+
+/* sign up form */
+
+#sign-in-buttons p {
+  margin: 0 0 15px;
+}
+
+#create-user {
+  margin-top: 30px;
+}
+
+#create-user input,
+#create-user select,
+#sign-in-form input {
+  border-radius: 0;
+}
+
+#create-user select {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #e5e5e5;
+  color: #333333;
+}
+
+#create-user input[type='text'],
+#create-user input[type='email'],
+#create-user input[type='password'],
+#create-user select,
+#sign-in-form input[type='email'],
+#sign-in-form input[type='password'] {
+  border: 1px solid #999999;
+  height: 45px;
+  width: 100%;
+}
+
+#create-user input[type='submit'] {
+  width: 107px;
+  height: 46px;
+  text-transform: uppercase;
+  font-family: 'Proxima Nova Bold';
+  font-size: 15px;
+}
+
+/*.green-line {
+  height: 2px;
+  background-color: #358f23;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-width: 82px;
+  width: 100%;
+  max-width: 100%;
+}*/
+
+.receive {
+  font-family: 'Proxima Nova Bold';
+  text-transform: uppercase;
+}
+
+.receive span {
+  color: #358f23;
+}
+
+#select-upload-photo {
+  width: 100%;
+  background-color: #e5e5e5;
+  border: 1px solid #999999;
+  border-radius: 0;
+  height: 45px;
+  text-align: left;
+  color: #000;
+}
+
+/* end sign up form */
+
+/* pets */
+
+.blue-bg {
+  background-color: #027eba;
+}
+
+/* end pets */
+
+.signout {
+  -moz-border-radius: 20px;
+  padding: 2px 12px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px; /* border radius */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; /* prevents bg color from leaking outside the border */
+  background-color: #fbef49; /* layer fill content */
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #005199;
+}
+
+.signout:hover, .signout:focus {
+  color: #428bca;
+}
+
+[class*="el-icon-"] {
+  font-size: 9px;
+}
+
+/* responsive iframe */
+
+/*iframe, object, embed {
+  max-width: 900px;
+  min-height: 940px;
+  width: 100%;
+  height: 100%;
+}*/
+
+.iframe-wrapper {
+  /*position: relative;*/
+  /*height: 0;*/
+  /*padding-top: 20%;*/
+  /*overflow: hidden;*/
+}
+
+.iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+/*  width: 100%;
+  height: 100%;*/
+/*  max-width: 900px;
+  max-height: 940px;*/
+}
+
+/* end responsive iframe */
+
+.sponsor {
+  font-size: 10px;
+  color: #fff;
+  font-family: 'Proxima Nova Black';
+  text-transform: uppercase;
+  /*margin-bottom: 5px;*/
+}

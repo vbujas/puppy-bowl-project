@@ -1,0 +1,132 @@
+<style type="text/css">
+  
+.poll-div { 
+ background-image: url('/assets/vote_not_chosen.png');
+ background-repeat: no-repeat;
+ width: 261px;
+ height: 149px;
+ padding-top: 60px;
+}
+
+.poll-div-hover { 
+ background-image: url('/assets/vote_hover.png');
+ background-repeat: no-repeat;
+}
+
+.poll-div-chosen { 
+  background-image: url('/assets/vote_chosen.png');
+}
+.pct {
+
+  font-family: "Cubano";
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+} 
+.poll-results {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+</style>
+
+<!-- <div class="row"> -->
+  <div class="col-md-10 col-xs-10 col-md-offset-2 col-xs-offset-2">
+    <% if user_signed_in? %>
+  
+   <div class="nopadding created-text" align="center"> TAKE THE POLL</div>
+   <div class="thank-text text-center"> which team will win? CLICK TO VOTE! </div>
+   <div class="thank-text" style="margin-top:25px;">
+   <!-- <div class="col-md-1"> </div> -->
+   <div class="col-md-6"> 
+   <% if pctruff > pctfluff %>
+    <%= image_tag "current_favorite.png", class: "center-block" %>
+   <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div>
+   <div class="col-md-6"> 
+      <% if  pctfluff > pctruff %>
+    <%= image_tag "current_favorite.png", class: "center-block" %>
+    <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div>
+   <!-- <div class="col-md-1"></div> -->
+   </div>
+   <div class="col-md-12" style="margin-top:25px;"> 
+   <!-- <div class="col-md-1"> </div> -->
+   <div class="row">
+     <div class="col-md-6">
+       <div class="row">
+         <div class="col-md-9 " id="team_ruff">
+          <%= image_tag "ruff_big.png", class: "img-responsive center-block" %>
+          </div>
+         <div class="col-md-3 pct nopadding"> <%=pctruff.to_i  %>% </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-9" id="team_fluff">
+              <%= image_tag "fluff_big.png", class: "img-responsive center-block" %>
+          </div>
+          <div class="col-md-3 pct nopadding" align="left"> <%=pctfluff.to_i  %>% </div>
+         </div>
+      </div>
+  </div>
+   <!-- <div class="col-md-1"></div> -->
+   </div>
+
+   <div class="col-md-12" align="center" style="margin-top:25px;">
+
+   <a href="/created?tid=<%=tid %>"> <%= image_tag "done_green.png", class: "img-responsive pointer shadowed center-block" %> </a>
+   </div>
+    <% else %>
+    
+      <p class="welcome text-center">Welcome to the 2015 PUPPY BOWL FANTASY DRAFT!</p>
+      <div class="row">
+        <a href="#myModal" data-toggle="modal" data-target="#myModal">
+          <%= image_tag "create_team_button.png", class: "img-responsive center-block" %>
+        </a>
+      </div>
+      <div class="row">
+        <p class="have-team">Already have a team?<a href="#">EDIT YOUR PICKS</a></p>
+      </div>
+      <div class="row">
+        <%= image_tag "landing_art.png", class: "img-responsive center-block" %>
+      </div>
+    <% end %>
+  </div>
+<!-- </div> -->
+<% unless user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="col-md-10"> -->
+            <div class="text-center">
+            <p class="welcome-to fancy"><span>welcome to</span></p>
+            <p class="fantasy-draft">fantasy draft</p>
+            <!-- <hr/> -->
+            <div id="sign-in-buttons">
+              <p class="welcome-text">Sign in with Facebook, Twitter or through e-mail to create <br>
+                your puppy team </p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-facebook"><span>F</span> Sign in with Facebook</button>'.html_safe, user_omniauth_authorize_path(:facebook) %></p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-twitter"><span>t</span> Sign in with Twitter</button>'.html_safe, user_omniauth_authorize_path(:twitter) %></p>
+              <p><button type="button" class="btn btn-social btn-email" id="sign-in-email"><span>m</span>sign in with email</button></p>
+              <p class="have-team-2">- already have a team? -</p>
+              <p><a href="#" class="edit-picks">Edit your picks</a></p>
+            </div>
+            <div id="email-signup" style="display: none;">
+              <%= render "devise/registrations/new" %>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

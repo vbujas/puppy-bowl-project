@@ -1,0 +1,183 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 offset-1">
+      <% if user_signed_in? %>
+     <div class=" col-md-12  created-text" align="center"> YOUR FINAL TEAM STATS </div>
+     <div class="thank-text" align="center" style="margin-top:15px;">
+      <div class="col-md-2" align="center"></div>
+      
+      <div class="col-md-8" align="center" style="margin-bottom:5px;">
+          <hr style="display:inline-block; width:22px; margin-right:8px;" class="small-rule-pacifico">
+       <div  class="team-score" style="display:inline-block; height:100%; vertical-align:middle;">
+      <%      touchdown = 7
+              fieldg = 3
+              tackle = 2
+              takeaway = 3
+              penalty = -2 
+              
+       %>
+
+
+        YOUR TEAM SCORE   <span class="created-text"> <%= score %> </span>
+        </div>
+          <hr style="display:inline-block; width:22px; margin-left:8px;" class="small-rule-pacifico">
+      </div>
+     
+       <div class="col-md-2" align="center"></div>
+     </div>
+     <div class="col-md-12" align="center" style="margin-bottom:20px"> 
+
+    <span class="you-ranked">You ranked <%= ranking %> of <%= noteams %> teams  <a href="#" data-toggle="modal" data-target="#myModal" class="btn signout">POLL RESULTS</a> <a href="/rankings" class="btn signout">SEE PLAYER RANKINGS</a></span>
+      </div>
+     <div class="col-md-12 col-xs-12 col-sm-12 nopadding"  align="center">   
+     <% if @puppies != nil %>
+
+    <% @puppies.each_with_index do |puppy, index| %>
+
+      <% if index == 1 %>
+       <%  classmiddle = 'middlediv' %>
+      <% else %>
+       <%  classmiddle = 'middlediv' %>
+      <% end %>
+       <div class="col-md-4  col-sm-4 col-xs-6  <%= classmiddle %>"  align="center" style="display:inline-block;"> 
+         
+       <div class="col-md-12 puppy-stats-div">
+        <div class="maxwstats">
+      <div class="puppy-name-finalstats"  align="center"> <%= puppy[1] %>  </div>
+       
+         <div   class="thumb-div thumb-chosen-team">
+         <%= image_tag puppy[10] , class: "img-responsive left-block", style: "max-width:145px; min-width:130px"  %>    
+          </div>
+        <% if puppy[13] == 'Ruff' %>
+          <div align="center" style="margin-top:18px; margin-bottom:1px; height:35px">
+         <%= image_tag "ruff.png" , class: "img-responsive center-block", style: "width:105px"  %>    
+           </div>
+        <% else %>
+          <div align="center" style="margin-top:18px; margin-bottom:1px; height:35px">
+          <%= image_tag "fluff.png" , class: "img-responsive center-block", style: "width:105px"  %>    
+          </div>
+
+        <% end %>
+          </div>
+           
+      <div class="score-div parameter-team maxwstats">TOUCHDOWNS: <span class="puppy-score-no"> <%=   puppy[6] %> </span> </div>
+      <div class="score-div parameter-team maxwscores">FIELD GOALS: <span class="puppy-score-no">  <%=   puppy[15] %>  </span> </div>
+      <div class="score-div parameter-team maxwscores">TAKEAWAYS: <span class="puppy-score-no"> <%=  puppy[8]  %>  </span>  </div>
+      <div class="score-div parameter-team maxwscores">TACKLES: <span class="puppy-score-no"> <%=   puppy[9]  %>  </span></div>
+      <div class="score-div parameter-team maxwscores">PENALTIES: <span class="puppy-score-no"> <%=  puppy[7]  %>   </span>   </div>
+      <div class="score-total-div parameter-team" >TOTAL: <span class="puppy-score-no">
+       <%= ( touchdown * puppy[6]) + (fieldg *  puppy[15]) + (tackle * puppy[9]) + (takeaway * puppy[8]) + (penalty * puppy[7]) %> 
+       </span> </div>
+         </div>
+         </div>
+     <% end %>    
+      
+        <% else %>
+         <div > You did not create a team</div>
+           <% end %>
+     </div>
+     <div class="col-md-12 col-xs-12 col-sm-12 point-values" style="margin-top:15px;" align="center">
+    POINT VALUES: </div>
+      <div class="col-md-12 col-xs-12 col-sm-12 nopadding" style="margin-top:35px;" align="center">
+      <div style="width:100%" align="center">
+      <div class="score-value-div parameter-team" style="min-width:130px;" >TOUCHDOWNS: <span class="puppy-score-no"> 7 </span> </div>
+      <div class="score-value-div parameter-team" style="min-width:120px;"  >FIELD GOALS: <span class="puppy-score-no"> 3 </span> </div>
+      <div class="score-value-div parameter-team" style="min-width:115px;" >TAKEAWAYS: <span class="puppy-score-no"> 3 </span> </div>
+      <div class="score-value-div parameter-team" style="min-width:100px;" >TACKLES: <span class="puppy-score-no"> 2 </span> </div>
+      <div class="score-value-div parameter-team" style="min-width:115px;" >PENALTIES: <span class="puppy-score-no"> -2 </span> </div>
+      </div>
+      </div>
+   
+   <div class="col-md-12 col-sm-12 col-xs-12 fb-friends-text" align="center" style="margin-top:10px;"> FACEBOOK FRIENDS WHO HAVE ALSO DRAFTED </div>
+     <div class="col-md-12 col-sm-12 col-xs-12 thank-text" align="center" style="margin-top:0px;">
+     <div class="col-md-3" align="center"></div>
+      
+      <div class="col-md-6" align="center" style="margin-bottom:5px;">
+          <hr style="display:inline-block; width:22px; margin-right:8px;" class="small-rule-pacifico">
+       <div  class="fantasy-team" style="display:inline-block; height:100%; vertical-align:middle;">
+        fantasy teams
+        </div>
+          <hr style="display:inline-block; width:22px; margin-left:8px;" class="small-rule-pacifico">
+          <div class="row mt-20">
+            <%= render 'shared/friends_image_who_drafted' %>
+          </div>
+      </div>
+     
+       <div class="col-md-3" align="center"></div>
+     </div>
+      <% else %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+      <div class="modal-content modalbg" align="center" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body" style ="max-width:500px; min-height:350px">       
+                <!---  BEGIN STATS    -->
+                <div  style="margin-top:14px; padding-left:0px; position:absolute; left:0px;top:20px;">
+                          <div class="col-md-12 created-text" align="center">poll results</div>
+          <div class="col-md-12 thank-text" style="margin-bottom:25px" align="center">The current vote on whch team will win.</div>
+
+   <div class="col-md-12 col-sm-12 " style="margin-top:14px; padding-left:0px"> 
+   <!-- <div class="col-md-1"> </div> -->
+   <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12 "> 
+  <div class="col-md-8 col-sm-8 col-xs-8 " align="center" style="padding-left:9px;"> 
+   <% if votes[1].to_i > votes[0].to_i %>
+    <%= image_tag "current_favorite.png", style: "padding-left:0px;" %>
+   <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div> 
+     <div class="col-md-12  col-sm-12 col-xs-12">
+       <div class="row">
+         <div class="col-md-8  col-sm-8  col-xs-8" align="center" style="border-right:3px solid #FAE53E; padding-left:0px; padding-right:0px; padding-bottom-0px;" id="team_ruff" align="center">
+          <%= image_tag "ruff_big.png", style: "padding-left:0px; width:150px;" %>
+          </div>
+         <div class="col-md-3 col-sm-3 col-xs-3 nopadding" style="display: table-cell; vertical-align:top;" align="center">
+         <span class="pct" style="position:absolute; top:-8px; left:6px;"> <%= votes[1].to_i %>% </span>
+         </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12"> 
+         <div class="col-md-8 col-sm-8 col-xs-8" align="center"> 
+      <% if  votes[0].to_i > votes[1].to_i %>
+    <%= image_tag "current_favorite.png", class: "left-block",  style: "padding-left:0px;" %>
+    <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div>
+      <div class="col-md-12  col-sm-12 col-xs-12 "> 
+        <div class="row">
+          <div class="col-md-8  col-sm-8 col-xs-8" style="border-right:3px solid #FAE53E; padding-left:8px; padding-right:0px; padding-bottom-0px;" id="team_fluff" align="center">
+              <%= image_tag "fluff_big.png", class: "img-responsive left-block", style: "padding-left:0px; width:150px;" %>
+          </div>
+          <div class="col-md-3  col-sm-3 col-xs-3  pct nopadding" align="center">
+         <span class="pct" style="position:absolute; top:-8px; left:6px;"> <%= votes[0].to_i  %>% </span>
+            </div>
+         </div>
+      </div>
+      </div>
+  </div>
+   <!-- <div class="col-md-1"></div> -->
+   </div>
+  </div>
+   <!--- END STATS -->
+
+
+
+    
+          </div>
+        </div>
+    </div>
+  </div>
+

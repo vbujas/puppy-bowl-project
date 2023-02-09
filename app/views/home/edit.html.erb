@@ -1,0 +1,665 @@
+<script type="text/javascript">
+ 
+ var team = [];
+
+ <% if pup1 !='***' && pup1 > -1 %>
+  
+      team[0] =  <%= pup1 %> 
+    <% end %>   
+     <% if pup2 !='***' && pup2 > -1 %>
+  
+      team[1] =  <%= pup2 %> 
+    <% end %>  
+     <% if pup3 !='***' && pup3 > -1 %>
+  
+      team[2] =  <%= pup3 %> 
+    <% end %>  
+
+$(document).ready( function() {
+ 
+      $('#done_edit').on('mouseover', function() {  $(this).attr('src', '/assets/blue_button_done_hover.png')   })
+      $('#done_edit').on('mouseout', function() {    $(this).attr('src', '/assets/blue_button_done.png')   })
+
+  $('#close_error').on('click', function() { 
+
+          $('#alert').removeClass('animated fadeInDown')
+         $('#alert').addClass('no_op')
+
+  })
+
+   function edit_pupp_remove(el, id) { 
+   
+   if (team.indexOf(parseInt(id)) > -1) {
+    // alert(el +  " " + id )
+    team.splice( team.indexOf(parseInt(id)) ,1)
+    arrange_thumbs_edit()
+    init_thumb_ruff_fluff(id)
+    ajaxedit()
+      }
+      }    
+
+
+function init_thumb(el, id) {
+       $('#team_div_' + id).removeClass('thumb-empty-team');
+       $('#team_div_' + id).addClass('thumb-chosen-team');
+       $('#thumb_div_'+ $('#team_div_' + id).attr('id')).removeClass('thumb-empty')
+       $('#thumb_div_'+ $('#team_div_' + id).attr('id')).addClass('thumb-chosen')
+       $('#select_'+ $('#team_div_' + id).attr('id')).addClass('thumb-chosen')
+       $('#info_'+ $('#team_div_' + id).attr('id')).addClass('thumb-chosen')
+
+      $(this).addClass('full_op');
+
+   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     $('#'+ el + '_'+id).on('click', function () { 
+     //  console.log('mouseenter')
+     $(this).removeClass('no_op');
+     $(this).addClass('full_op');
+     $('#infoteam_'+ id ).addClass('pointer')
+     $('#infoteam_'+ id ).removeClass('hidden')
+     $('#remove_'+ id ).addClass('pointer')
+     $('#remove_'+ id ).removeClass('hidden')
+      return false
+      });
+   } 
+   else {
+     $('#'+ el + '_'+id).on('mouseenter', function () { 
+     //  console.log('mouseenter')
+     $(this).removeClass('no_op');
+     $(this).addClass('full_op');
+     $('#infoteam_'+ id ).addClass('pointer')
+     $('#infoteam_'+ id ).removeClass('hidden')
+     $('#remove_'+ id ).addClass('pointer')
+     $('#remove_'+ id ).removeClass('hidden')
+      });
+   }
+
+     $('#'+ el + '_'+id).on('mouseleave', function () { 
+   //  console.log('mouseout')
+     $(this).addClass('no_op');
+     $(this).removeClass('full_op');    
+     $('#infoteam_'+ id ).removeClass('pointer')
+     $('#infoteam_'+ id ).addClass('hidden')
+     $('#remove_'+ id ).removeClass('pointer')
+     $('#remove_'+ id ).addClass('hidden')
+    });
+
+    $('#'+ 'remove' + '_'+id).on('click', function () { 
+   // console.log('#'+ el + '_'+id + 'pupid ' + $(this).attr('pupid'))
+    edit_pupp_remove($(this).parent().attr('id'), $(this).parent().attr('pupid'))
+    });  
+
+     $('#infoteam_'+id).on('click', function () { 
+     //alert('This will open popup for puppy No' + $(this).parent().attr('pupid'))
+     pupid = $(this).parent().attr('pupid')
+    $('#info_name').html($('#pup_thumb_name_' + pupid).html())
+    $('#info_breed').html($('#pup_thumb_breed_' + pupid).html())
+    $('#info_sex').html($('#pup_thumb_sex_' + pupid).html())
+    $('#info_age').html($('#pup_thumb_age_' + pupid).html())
+    $('#info_fun_fact').html($('#pup_thumb_fun_fact_' + pupid).html())
+    $('#info_team_pic').attr('src',  $('#pup_thumb_team_' + pupid).html() == 'Ruff' ? '/assets/ruff.png' : '/assets/fluff.png' )
+    $('#info_big_pic').attr('src', '/assets/' + $('#big_pic_' + pupid).html())
+    $('#myModal').modal('show');  
+ 
+    }); 
+
+  }
+
+
+function arrange_thumbs_edit() { 
+  console.log('length of draftedpupps: ' +  team.length )
+    var i = 0
+
+    if(team.length == 3) {
+     $('#done_edit').removeClass('no_op hidden')  
+     $('#done_edit').addClass('animated fadeInDown')
+     $('#alert').addClass('no_op')
+    }
+
+    else {
+       $('#done_edit').removeClass('animated fadeInDown')
+       $('#done_edit').addClass('no_op hidden')
+    }
+
+      if(team.length == 0) {
+     $('#link_draft').removeClass('no_op hidden')  
+    $('#link_draft').addClass('animated fadeInDown')
+
+    }
+    else {
+       $('#link_draft').removeClass('animated fadeInDown')
+       $('#link_draft').addClass('no_op hidden')
+    }
+
+
+
+    $.each( team, function(index, pupp) {
+      if(pupp > -1) {
+     var k  = index + 1
+     console.log(' NAME OF DRAFTED PUPP: '+ '#pup_thumb_'+ pupp +  $('#pup_thumb_'+ pupp).attr('src'));
+     $('#team_member_thumb_'+ k ).attr('src', $('#pup_thumb_'+ pupp).attr('src'))
+     $('#team_member_name_'+ k ).html($('#pup_thumb_name_'+ pupp).html())
+     $('#team_member_breed_'+ k ).html($('#pup_thumb_breed_'+ pupp).html())
+     $('#team_member_age_'+ k ).html($('#pup_thumb_age_'+ pupp).html())
+     $('#team_member_sex_'+ k ).html($('#pup_thumb_sex_'+ pupp).html())
+
+     $('#pup_overlay_'+ k ).attr('pupid', pupp )
+     $('#pup_overlay_'+ k ).removeClass('full_op')
+     $('#pup_overlay_'+ k ).addClass('drafted')
+     $('#infoteam_'+ k ).removeClass('pointer')
+     $('#infoteam_'+ k ).addClass('hidden')
+     $('#remove_'+ k ).removeClass('pointer')
+     $('#remove_'+ k ).addClass('hidden')
+     $('#team_div_'+ k ).removeClass('thumb-empty-team')
+     $('#team_div_'+ k ).addClass('thumb-chosen-team')  
+      
+       
+      i++;
+      }
+    })
+     
+     for (i = team.length ; i < 3; i++) {
+      var k = i + 1
+      console.log('removing PUPP:' + k);
+     $('#team_member_thumb_'+ k).attr('src', '/assets/empty_pupp.jpg' ) 
+     $('#team_member_name_'+ k ).html('')
+     $('#team_member_breed_'+ k ).html('')
+     $('#team_member_sex_'+ k ).html('')
+     $('#team_member_age_'+ k ).html('')
+     $('#pup_overlay_'+ k).off();
+     $('#infoteam_'+ k).off();
+     $('#remove_'+ k).off();
+     $('#pup_overlay_'+ k ).attr('pupid', '' )
+     $('#pup_overlay_'+ k ).removeClass('full_op')
+     $('#pup_overlay_'+ k ).addClass('no_op')
+     $('#infoteam_'+ k ).removeClass('pointer')
+     $('#infoteam_'+ k ).addClass('hidden')
+     $('#remove_'+ k ).removeClass('pointer')
+     $('#remove_'+ k ).addClass('hidden')
+     $('#team_div_'+ k ).addClass('thumb-empty-team')  
+        
+  }
+ } 
+     <% if pup1 !='***' %>
+     init_thumb('pup_overlay', 1);
+     init_thumb('pup_overlay', 2);
+     init_thumb('pup_overlay', 3);
+    <% end %>
+    
+   function edit_pupp_add(id) { 
+    
+     $('#remove_div_'+ id ).off();
+     $('#select_'+ id ).off();
+     $('#info_'+ id ).off();
+
+     $('#remove_div_'+ id ).removeClass('full_op thumb-empty');
+     $('#select_'+ id ).removeClass('pointer');
+     $('#info_'+ id ).removeClass('pointer');
+     $('#select_'+ id ).addClass('hidden');
+     $('#info_'+ id ).addClass('hidden');
+     $('#remove_div_'+ id ).addClass('no_op');
+    team.push(parseInt(id))
+    init_thumb('pup_overlay', team.length)
+    $('#pup_overlay_'+team.length).attr('pupid', id)
+     $('#thumb_div_'+ id).removeClass('thumb-empty')
+       $('#thumb_div_'+ id).addClass('thumb-chosen')
+       $('#div_checkedtick_'+ id).removeClass('no_op')
+    arrange_thumbs_edit()
+    ajaxedit()
+     
+      }     
+
+   $('#done_edit').on('click', editteam)
+var p1,p2,p3
+      team[0] == undefined ? p1 = -1 : p1 = team[0]
+      team[1] == undefined ? p2 = -1 : p2 = team[1]
+      team[2] == undefined ? p3 = -1 : p3 = team[2]
+   function editteam() { 
+    $('#done_edit').off()
+$.ajax( {
+    type :"POST", 
+    async :true, 
+    url : '/editteam.json',
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify( { team : { pup1: team[0], pup2: team[1], pup3: team[2], user_id: $('#user_id').html() } }) ,
+    success: function(data) {  
+          if (data.id) {
+            window.location.href = "/created";
+             
+            }
+          else 
+         {   
+            $('#done_edit').on('click', editteam) 
+            }
+               },
+    error: function(error) {
+               $('#done_edit').on('click', editteam) 
+                }
+        });  
+
+}
+
+     function ajaxedit() { 
+    
+       var p1,p2,p3
+      team[0] == undefined ? p1 = -1 : p1 = team[0]
+      team[1] == undefined ? p2 = -1 : p2 = team[1]
+      team[2] == undefined ? p3 = -1 : p3 = team[2]
+
+
+$.ajax( {
+    type :"POST", 
+    async :true, 
+    url : '/editteam.json',
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify( { team : { pup1: p1, pup2: p2, pup3: p3, user_id: $('#user_id').html() } }) ,
+    success: function(data) {  
+          if (data.id) {
+             console.log('updated ok')
+             
+            }
+          else 
+         {   
+            console.log('updated not ok')
+            }
+               },
+    error: function(error) {
+              console.log('updated not ok')
+                }
+        });  
+
+}
+
+      
+ function init_thumb_ruff_fluff(id) {
+     
+     $('#thumb_div_'+id).addClass('thumb-empty')
+    
+
+      $('#thumb_div_'+id).removeClass('thumb-chosen')
+      $('#div_checkedtick_'+ id).addClass('no_op')
+   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ // some code..
+       $('#remove_div_'+id).on('click', function (e) { 
+       $(this).removeClass('no_op');
+
+     $('#info_'+id).addClass('pointer')
+     $('#select_'+id).addClass('pointer')
+     $('#info_'+id).removeClass('hidden')
+     $('#select_'+id).removeClass('hidden')
+       console.log('mobile device detected')
+        return false
+      });
+
+}
+else {
+      $('#remove_div_'+id).on('mouseenter', function () { 
+      $(this).removeClass('no_op');
+      $('#info_'+id).addClass('pointer')
+      $('#select_'+id).addClass('pointer')
+      $('#info_'+id).removeClass('hidden')
+      $('#select_'+id).removeClass('hidden')
+
+       console.log('non-mobile device detected')
+      });
+}
+     $('#remove_div_'+id).on('mouseleave', function () { 
+     $(this).addClass('no_op');
+      $('#info_'+id).removeClass('pointer')
+      $('#select_'+id).removeClass('pointer')
+      $('#info_'+id).addClass('hidden')
+      $('#select_'+id).addClass('hidden')
+    });
+
+    $('#select_'+id).on('click', function () { 
+    if(team.length < 3) {
+    edit_pupp_add($(this).parent().attr('pupid')) }
+    else {
+ 
+    $('#alert').removeClass('no_op')  
+    $('#alert').addClass('animated fadeInDown')
+    $('#done_edit').addClass('no_op')
+    }
+    }); 
+     
+    $('#info_'+ id).on('click', function () { 
+    //  alert('This will open popup for puppy No'  + $(this).parent().attr('pupid'))
+    $('#info_name').html($('#pup_thumb_name_' + id).html())
+    $('#info_breed').html($('#pup_thumb_breed_' + id).html())
+    $('#info_sex').html($('#pup_thumb_sex_' + id).html())
+    $('#info_age').html($('#pup_thumb_age_' + id).html())
+    $('#info_fun_fact').html($('#pup_thumb_fun_fact_' + id).html())
+    $('#info_team_pic').attr('src',  $('#pup_thumb_team_' + id).html() == 'Ruff' ? '/assets/ruff.png' : '/assets/fluff.png' )
+    $('#info_big_pic').attr('src', '/assets/' + $('#big_pic_' + id).html()) 
+    $('#myModal').modal('show');  
+    }); 
+  } 
+    
+    
+  <% puppies.each do |puppy| %>
+  <% if puppy.id != pup1 &&  puppy.id != pup2 && puppy.id != pup3 %>   
+        init_thumb_ruff_fluff(<%= puppy.id %>)
+  <% end %>
+  <% end %>
+   
+   arrange_thumbs_edit()
+
+    }) // end document ready  
+</script>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12  col-sm-12 offset-1">
+      <% if user_signed_in? %>
+      <div id="user_id" style="display:none"><%= current_user.id %></div>
+     <div class="col-md-12 created-text" align="center"> EDIT YOUR TEAM </div>
+     <div class="col-md-12 thank-text" align="center"> You need 3 pups for your team. </div>
+     
+     <div class="col-md-12 thank-text" align="center" style="margin-top:15px;">
+        <div class="col-md-3" align="center"></div>
+      
+      <div class="col-md-6" align="center" style="margin-bottom:5px;">
+          <hr style="display:inline-block; width:22px; margin-right:8px;" class="small-rule-pacifico">
+       <div  class="pacifico-yellow" style="display:inline-block; height:100%; vertical-align:middle;">
+        <%= current_user.username ? current_user.first_name : current_user.first_name %> 's team
+        </div>
+          <hr style="display:inline-block; width:22px; margin-left:8px;" class="small-rule-pacifico">
+      </div>
+     
+       <div class="col-md-3" align="center"></div>
+     </div>
+
+     <div id="pupsforedit" class="col-md-12  nopadding" style="margin-top:10px;" align="center"> 
+      <div class="col-md-2 col-sm-2"> </div>
+      <div class="col-md-8 col-sm-8 nopadding center-block"  align="center">
+      
+       <div class="nopadding  maxw" style="display:inline-block"> 
+          <% puppies.each do |puppy| %>
+           <% if puppy.id == pup1 %>
+          <div id="team_div_1"  class="thumb_div">
+         <%= image_tag puppy.pic , class: "img-responsive left-block",  id: "team_member_thumb_1"  %>
+          <div id="pup_overlay_1" pupid=<%= puppy.id %> class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_1" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hidden", id: "infoteam_1", style: "margin-top:5px;" %>
+         </div>
+         </div>
+          
+         <div class="puppy-name-team" id="team_member_name_1" align="center"> <%= puppy.name %>  </div>
+         
+         
+           <% end %>
+           <% end %>
+       <% if pup1 == '***' || pup1 == -1 %>
+       
+          <div id="team_div_1"  class="thumb_div">
+         <%= image_tag "empty_pupp.jpg" , class: "img-responsive left-block",  id: "team_member_thumb_1"  %>
+          <div id="pup_overlay_1" pupid="" class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_1" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hidden", id: "infoteam_1", style: "margin-top:5px;" %>
+         </div>
+         </div>        
+         <div class="puppy-name-team" id="team_member_name_1" align="center">  </div>
+         <% end %>
+        </div>
+
+
+          <div class="nopadding maxw" style="display:inline-block" align="center"> 
+          <% puppies.each do |puppy| %>
+           <% if puppy.id == pup2 %>
+         <div id="team_div_2"  class="thumb_div">
+         <%= image_tag puppy.pic , class: "img-responsive left-block",  id: "team_member_thumb_2"  %>
+         <div id="pup_overlay_2" pupid=<%= puppy.id %> class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_2" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hidden", id: "infoteam_2", style: "margin-top:5px;" %>
+         </div>
+         </div>
+      
+          <div class="puppy-name-team" id="team_member_name_2" align="center"> <%= puppy.name %>  </div>  
+           <% end %>
+           <% end %>
+           <% if pup2 == '***' || pup2 == -1 %>    
+          <div id="team_div_2"  class="thumb_div">
+         <%= image_tag "empty_pupp.jpg" , class: "img-responsive left-block",  id: "team_member_thumb_2"  %>
+          <div id="pup_overlay_2" pupid="" class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_2" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hidden", id: "infoteam_2", style: "margin-top:5px;" %>
+         </div>
+         </div>        
+         <div class="puppy-name-team" id="team_member_name_2" align="center">  </div>
+         <% end %>
+        </div>
+        
+         <div class="nopadding maxw"  style="display:inline-block"  align="center"> 
+            <% puppies.each do |puppy| %>
+           <% if puppy.id == pup3 %>
+         <div id="team_div_3"  class="thumb_div">
+
+         <%= image_tag puppy.pic , class: "img-responsive left-block",  id: "team_member_thumb_3"  %> 
+         <div id="pup_overlay_3" pupid=<%= puppy.id %> class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_3" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hidden", id: "infoteam_3", style: "margin-top:5px;" %>
+         </div>     
+         </div>
+            <div class="col-md-12 puppy-name-team maxw" id="team_member_name_3" align="center"> <%= puppy.name %>  </div>
+          <% end %>
+           <% end %>
+          
+          <% if pup3 == '***' || pup3 == -1 %>
+          <div id="team_div_3"  class="thumb_div">
+         <%= image_tag "empty_pupp.jpg" , class: "img-responsive left-block",  id: "team_member_thumb_3"  %>
+          <div id="pup_overlay_3" pupid="" class="pup_overlay_div  no_op">
+         <%= image_tag "remove.png", class: "img-responsive remove-info-icon pointer hidden", id: "remove_3" %> 
+         <%= image_tag "info.png", class: "img-responsive remove-info-icon pointer hdden", id: "infoteam_3", style: "margin-top:5px;" %>
+         </div>
+         </div>      
+         <div class="puppy-name-team maxw" id="team_member_name_3" align="center">   </div>    
+         <% end %>
+        </div>
+        </div>
+
+      <div class="col-md-2 col-sm-2"> </div>
+     </div>
+        <div class="col-md-12  col-sm-12  col-xs-12  center" style="padding-top:4px; position:relative;">
+          <div  align="center" style="position:absolute; left:0px; top:0px; width:100%;margin-bottom:10px;">
+          <%= image_tag "blue_button_done.png", class: "img-responsive right-block shadowed pointer hidden no_op", id: "done_edit" %> 
+          </div>
+           <div id="link_draft"    class="no_op hidden" align="center">
+          <a href="/draft" >
+           <%= image_tag "back_to_draft_yellow.png", :'data-alt-src' => "assets/back_to_draft_shd_white.png", class: "img-responsive left-block shadowed pointer draftbutton" %>
+           </a>
+          </div>
+          <div id="alert"  class="col-md-12 col-sm-12 col-xs-12 center nopadding no_op" style="background-color:#F0C902 ">
+          <div class="col-md-1 col-sm-1 col-xs-1 center" style="background-color:#F0C902;color:#9F8403; padding-top:8px; position:absolute; left:0px;top:0px; height:35px;">
+          <span id="warning" class="fa fa-warning" style="font-size:22px;"></span>
+          </div>
+          <div  id="alerttext" class="col-md-10 col-xs-10 col-sm-10" style="background-color:#FAEC4E;color:#0063AE; font-weight:700;  font-size:14px;" align="left"> You have 3 pups on your team. Remove 1 or more pups to add another choice. </div>
+          <div id="alertclose" class="col-md-1 col-sm-1 col-xs-1" style="color:#9F8403; padding-top:5px;" align="center"> 
+          <img src="/assets/x.png" id="close_error" class="pointer-close pointer"/>  
+          </div>
+          </div>
+          </div>
+      </div>
+      </div>  <!---  end of pups  for edit -->  
+
+
+   <div id="row-teams" class="row">
+     <!---    TEAM RUFF   -->    
+     <div id="ruff-logo-edit-page" class="col-md-12 col-sm-12 col-xs-12" style="margin-top:0px; padding-right:0px; padding-left:0px" align="center"> 
+     <div class="col-md-2 col-sm-2 padding2" align="center" style="padding-right:8px; padding-top:0px">  
+         <div class="team-title nopadding" style="max-width:150px;min-width:150px;">
+          <hr class="small-rule-yellow" style="margin-right:5px; position:relative;top:-4px; width:25px;display:inline-block">  
+        <span style= "position:relative;top:-20px; left:0px; display:inline-block">TEAM</span> 
+         <hr class="small-rule-yellow" style= "margin-left:5px;height:2px; position:relative;top:-4px;  width:25px; display:inline-block"> 
+         </div>
+        <%= image_tag "ruff_big.png", class: "img-responsive left-block", style:"max-width:130px;min-width:130px;"  %>
+       <div align="center" class="puppy-name nopadding" style="position:relative; top:-7px; left:0px">poll </div>
+       <div align="center" class="pct-white" style="position:relative; top:-7px;">  <%= votestats[1].ceil %>%  </div>
+       <div align="center" class="thank-text" style="position:relative; top:-12px;">favor to win </div>
+      </div>
+
+        <div class="col-md-10 col-sm-10  nopadding"  align="center" style="margin-top:10px;">  
+        <% puppies.each_with_index do |puppy, index| %>
+        <% if puppy.team_name == 'Ruff' %>
+        <% if puppy.id == pup1 || puppy.id == pup2 || puppy.id == pup3 %>
+        <%  chosen = 'thumb-chosen' %>
+          <%  pointer = ''  %>
+          
+
+        <% else %>
+        <%  chosen = 'thumb-empty' %>
+          <%  pointer = 'pointer'    %>
+           
+           
+        <% end %>
+         <div class="col-md-2  col-sm-4 col-xs-6 maxwteams nopadding" style="z-index:100;" align="center"> 
+         <div id="thumb_div_<%= puppy.id %>" class="thumb_div_teams <%= chosen %> nopadding">
+           <% if puppy.id == pup1 || puppy.id == pup2 || puppy.id == pup3 %>
+         <div id="div_checkedtick_<%= puppy.id %>" class="checkedtick" style="z-index:50"><span class="fa fa-check" style="color:#02559B"></span></div>
+         <% else %>
+         <div id="div_checkedtick_<%= puppy.id %>" class="checkedtick no_op"><span class="fa fa-check" style="color:#02559B"></span></div>
+
+             <% end %>
+         <image src="/assets/<%= puppy.pic %>" class="img-responsive left-block" id="pup_thumb_<%= puppy.id %>" />
+        <div id="remove_div_<%= puppy.id %>" pupid=<%= puppy.id %> class="pup_overlay_div no_op">
+         <img src="/assets/select.png"  class="img-responsive remove-info-icon <%= pointer %> hidden" id="select_<%= puppy.id %>" /> 
+         <img src="/assets/info.png" class="img-responsive remove-info-icon <%= pointer %> hidden" id="info_<%= puppy.id %>" style="margin-top:5px" />
+         </div>
+        </div>
+         <div class="puppy-name" style="margin-bottom:7px;" id="pup_thumb_name_<%= puppy.id %>" align="center"><%= puppy.name %></div>
+    <div class="col-md-12 puppy-name hidden" id="pup_thumb_breed_<%= puppy.id %>" align="center"><%= puppy.breed %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_sex_<%= puppy.id %>" align="center"><%= puppy.sex %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_age_<%= puppy.id %>" align="center"><%= puppy.age %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_fun_fact_<%= puppy.id %>" align="center"><%= puppy.fun_fact %></div>
+          <%
+           p = puppy.big_pic
+            if p == nil
+            p = 'big_pup.png,'
+          end
+           bigpics = p.split(',') 
+           %>
+
+         <div id="big_pic_<%= puppy.id %>" style="display:none"><%= bigpics[0] %></div>
+         <div id="pup_thumb_team_<%= puppy.id %>" style="display:none"><%= puppy.team_name %></div>
+        </div>
+
+        <% end %>
+        <% end %>
+        </div> <!-- end col md 10 for ruff -->
+         </div> <!-- end col md 12 for ruff -->
+
+        
+            <!---    TEAM FLUFF   -->    
+     <div class="col-md-12  col-sm-12 col-xs-12" style="padding-top:25px; padding-left:0px; padding-right:0px;" align="center"> 
+       <div class="col-md-2 col-sm-2 padding2"  align="center" style="padding-right:8px;  padding-top:0px">  
+         <div class="team-title nopadding" style="max-width:150px;min-width:150px;">
+          <hr class="small-rule-yellow" style="margin-right:5px; position:relative;top:-4px; width:25px;display:inline-block">  
+        <span style= "position:relative;top:-20px; left:0px; display:inline-block">TEAM  </span> 
+         <hr class="small-rule-yellow" style= "margin-left:5px;height:2px; position:relative;top:-4px;  width:25px; display:inline-block"> 
+         </div>
+        <%= image_tag "fluff_big.png", class: "img-responsive left-block", style:"max-width:130px;min-width:130px;"  %>
+       <div align="center" class="puppy-name nopadding" style="position:relative; top:-7px; left:0px">poll </div>
+       <div align="center" class="pct-white" style="position:relative; top:-7px;">  <%= votestats[0].floor %>%  </div>
+       <div align="center" class="thank-text" style="position:relative; top:-12px;">favor to win </div>
+      </div>
+
+        <div class="col-md-10 col-sm-10 nopadding"  align="center" style="margin-top:10px;">  
+        <% puppies.each do |puppy| %>
+        <% if puppy.team_name == 'Fluff' %>
+        <% if puppy.id == pup1 || puppy.id == pup2 || puppy.id == pup3 %>
+        <%  chosen = 'thumb-chosen' %>
+          <%  pointer = '' %>
+
+        <% else %>
+        <%  chosen = 'thumb-empty' %>
+        <%  pointer = 'pointer' %>
+
+        <% end %>
+         <div class="col-md-2  col-sm-4 col-xs-6 maxwteams nopadding" style="z-index:10000;" align="center"> 
+         <div id="thumb_div_<%= puppy.id %>" class="thumb_div_teams <%= chosen %> nopadding">
+          <% if puppy.id == pup1 || puppy.id == pup2 || puppy.id == pup3 %>
+         <div id="div_checkedtick_<%= puppy.id %>" class="checkedtick" style="z-index:50"><span class="fa fa-check" style="color:#02559B"></span></div>
+          <% else %>
+         <div id="div_checkedtick_<%= puppy.id %>" class="checkedtick no_op"><span class="fa fa-check" style="color:#02559B"></span></div>
+             <% end %>
+         <image src="/assets/<%= puppy.pic %>" class="img-responsive left-block" id="pup_thumb_<%= puppy.id %>" />
+         <div id="remove_div_<%= puppy.id %>" pupid=<%= puppy.id %> class="pup_overlay_div no_op">
+         <img src="/assets/select.png"  class="img-responsive remove-info-icon <%= pointer %> hidden" id="select_<%= puppy.id %>" /> 
+         <img src="/assets/info.png" class="img-responsive remove-info-icon <%= pointer %> hidden" id="info_<%= puppy.id %>" style="margin-top:5px" />
+         </div>
+        </div>
+         <div class="puppy-name" style="margin-bottom:7px;" id="pup_thumb_name_<%= puppy.id %>" align="center"><%= puppy.name %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_breed_<%= puppy.id %>" align="center"><%= puppy.breed %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_sex_<%= puppy.id %>" align="center"><%= puppy.sex %></div> 
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_age_<%= puppy.id %>" align="center"><%= puppy.age %></div>
+         <div class="col-md-12 puppy-name hidden" id="pup_thumb_fun_fact_<%= puppy.id %>" align="center"><%= puppy.fun_fact %></div>
+          <%
+           p = puppy.big_pic
+           if p == nil
+            p = 'big_pup.png,'
+          end
+           bigpics = p.split(',') 
+           %>
+         <div id="big_pic_<%= puppy.id %>" style="display:none"><%= bigpics[0] %></div>
+         <div id="pup_thumb_team_<%= puppy.id %>" style="display:none"><%= puppy.team_name %></div>
+        </div>
+        <% end %>
+        <% end %>
+        </div>
+        </div>  <!-- end col md 12 for fluff -->
+        </div> <!-- end row teams -->
+      <% end %>
+    <!-- Modal -->
+    <div class="modal  fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="z-index:101;">
+        <div class="modal-content  modalbg">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+       <div class="row">     
+      <div id="puppy_pics" class="col-md-5 col-xs-12 col-sm-5" align="center">     
+      <div  class="col-md-12 col-sm-12 col-xs-12 nopadding pupimagediv"> 
+        <%= image_tag  'fluff_big.png', id: "info_big_pic" , class: "img-responsive center-block" %></div>
+      </div>
+      <div id="puppy_sheet" class="col-md-7 col-xs-12 col-sm-7">
+       <div class="sheet" align="left">
+         <div id="info_name" class="row pupname nopadding">   </div>
+         <div class="row team-caroussel nopadding" align="left"> Team</div>
+         <div class="row nopadding"> 
+         
+          <%= image_tag "ruff.png", id:"info_team_pic" ,  class: "img-responsive team-pic" %>
+           </div>
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">BREED(S): </span>
+             <span id="info_breed" class="pupinfo-yellow"></span>
+             </div> 
+           </div>
+
+           <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">SEX: </span>
+             <span id="info_sex" class="pupinfo-yellow"></span>
+             </div> 
+           </div>
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">AGE: </span>
+             <span id="info_age" class="pupinfo-yellow"></span>
+             </div> 
+           </div>
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">FUN FACT: </span>
+             <span id="info_fun_fact" class="pupinfo-yellow"></span>
+             </div> 
+           </div>
+       </div>
+       </div>
+       </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

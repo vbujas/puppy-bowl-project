@@ -1,0 +1,58 @@
+<% unless user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-8 col-sm-8 col-xs-12 text-center col-centered">
+            <p class="welcome-to fancy"><span>welcome to</span></p>
+            <p class="fantasy-draft">fantasy draft</p>
+            <hr class="green-line">
+            <!-- <div id="sign-in-buttons"> -->
+              <p class="welcome-text">Sign in with Facebook, Twitter or through e-mail <br> to create
+                your puppy team.</p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>'.html_safe, user_omniauth_authorize_path(:facebook), class: "popup", :"data-width" => 600, :"data-height" => 400 %></p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-twitter"><i class="fa fa-twitter"></i> Sign in with Twitter</button>'.html_safe, user_omniauth_authorize_path(:twitter), class: "popup", :"data-width" => 600, :"data-height" => 400 %></p>
+              <p><button type="button" class="btn btn-social btn-email" id="sign-in-email"><i class="el-icon-envelope"></i> sign up with email</button></p>
+              <p class="have-team-2 fancy2"><span>already have a team?</span></p>
+              <p><a href="#" class="edit-picks" id="sign-in-link">Edit your picks</a></p>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="email-signup"> -->
+    <!-- Modal -->
+    <div class="modal fade" id="sign-up-em" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-8 col-sm-8 col-xs-12 text-center col-centered">
+              <p class="welcome-to fancy"><span>welcome to</span></p>
+              <p class="fantasy-draft">fantasy draft</p>
+              <hr class="green-line">
+              <%= render "devise/registrations/new" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+<% end %>
+<script>
+  $('#sign-in-link').click(function() {
+    $('#sign-up').modal('hide');
+    $('#sign-in').modal('show');
+  });
+  $('#sign-in-email').click(function() {
+    $('#sign-up').modal('hide');
+    $('#sign-up-em').modal('show');
+  });
+</script>

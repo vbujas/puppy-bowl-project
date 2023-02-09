@@ -1,0 +1,103 @@
+<style type="text/css">
+  
+.poll-div { 
+ background-image: url('/assets/vote_not_chosen.png');
+ background-repeat: no-repeat;
+ width: 261px;
+ height: 149px;
+ padding-top: 60px;
+}
+
+.poll-div-hover { 
+ background-image: url('/assets/vote_hover.png');
+ background-repeat: no-repeat;
+}
+
+.poll-div-chosen { 
+  background-image: url('/assets/vote_chosen.png');
+}
+.pct {
+
+  font-family: "Cubano";
+  color: #ffffff;
+  font-size: 40px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+} 
+.poll-results {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+</style>
+
+<div class="container">
+  <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+    <% if user_signed_in? %>
+  
+    <div class="col-md-10 col-sm-10 col-xs-10 created-text" align="center"> TAKE THE POLL</div>
+   <div class="col-md-10 col-sm-10 col-xs-10 thank-text text-center" style="margin-bottom:50px;"> Which team will win? CLICK TO VOTE! </div>
+ 
+   <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:14px; padding-left:0px"> 
+  
+   <div class="col-md-6 col-sm-6 col-xs-12" style=" max-width:300px; padding-left:9px;">
+      <div class="col-md-12 col-sm-12 col-xs-12"   style="padding-left:9px;"> 
+   <% if pctruff > pctfluff %>
+    <%= image_tag "current_favorite.png", style: "padding-left:0px;" %>
+   <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div>
+     <div class="col-md-12 col-sm-12 col-xs-12">
+       <div class="row">
+         <div class="col-md-8  col-sm-8  col-xs-8" style="border-right:3px solid #FAE53E; padding-left:8px; padding-right:0px; padding-bottom-0px;" id="team_ruff" align="center">
+          <%= image_tag "ruff_big.png", class: "img-responsive left-block", style: "padding-left:0px; width:150px;" %>
+          </div>
+         <div class="col-md-3 col-sm-3 col-xs-3  nopadding" style="display: table-cell; vertical-align:top;" align="center">
+         <span class="pct" style="position:absolute; top:-8px; left:6px;"> <%=pctruff.to_i  %>% </span>
+         </div>
+        </div>
+      </div>
+        </div>
+         <div class="col-md-6 col-sm-6 col-xs-12"  style="max-width:300px; padding-left:9px;">
+         <div class="col-md-12  col-sm-12 col-xs-12"  > 
+      <% if  pctfluff > pctruff %>
+    <%= image_tag "current_favorite.png",  style: "padding-left:0px;" %>
+    <% else %>
+   <img src="/assets/spacer.png" style="height:21px; width:178px" />
+   <% end %> 
+   </div>
+      <div class="col-md-12  col-sm-12 col-xs-12"> 
+        <div class="row">
+          <div class="col-md-8  col-sm-8 col-xs-8" style="border-right:3px solid #FAE53E; padding-left:8px; padding-right:0px; padding-bottom-0px;" id="team_fluff" align="center">
+              <%= image_tag "fluff_big.png", class: "img-responsive left-block", style: "padding-left:0px; width:150px;" %>
+          </div>
+          <div class="col-md-3  col-sm-3 col-xs-3 pct nopadding" align="center">
+         <span class="pct" style="position:absolute; top:-8px; left:6px;"> <%=pctfluff.to_i  %>% </span>
+            </div>
+         </div>
+      </div>
+       </div>
+ 
+</div>
+
+   <div class="col-md-12  col-sm-12 col-xs-12" align="center" style="margin-top:25px;">
+
+   <a href="/created?tid=<%=tid %>"> <%= image_tag "done_green.png", :'data-alt-src' => "assets/green_button_done_hover.png", class: "img-responsive pointer shadowed center-block", id: "done_green" %> </a>
+   </div>
+    <% else %>
+    
+      <p class="welcome text-center">Welcome to the 2015 PUPPY BOWL FANTASY DRAFT!</p>
+      <div class="row">
+        <a href="#myModal" data-toggle="modal" data-target="#myModal">
+          <%= image_tag "create_team_button.png", class: "img-responsive center-block" %>
+        </a>
+      </div>
+      <div class="row">
+        <p class="have-team">Already have a team?<a href="#">EDIT YOUR PICKS</a></p>
+      </div>
+      <div class="row">
+        <%= image_tag "landing_art.png", class: "img-responsive center-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>

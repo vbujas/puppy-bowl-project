@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  PUPPY_ID: 1
+  TEAM_ID: 1
+
+two:
+  PUPPY_ID: 1
+  TEAM_ID: 1

@@ -1,0 +1,46 @@
+<h2>Puppies</h2>
+<div class="col-md-10">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Thumbnail</th>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Team</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>Touchdowns</th>
+      <th>Field Goals</th>
+      <th>Takeaways</th>
+      <th>Tackles</th>
+      <th>Penalties</th>
+    
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puppies.each do |puppy| %>
+      <tr>
+        <td><%= image_tag puppy.pic %></td>
+        <td><%= puppy.name %></td>
+        <td><%= puppy.breed %></td>
+        <td><%= puppy.team_name %></td>
+        <td><%= puppy.sex %></td>
+        <td><%= puppy.age %></td>
+        <td><%= puppy.score_touchdowns %></td>
+        <td><%= puppy.score_field_goals %></td>
+        <td><%= puppy.score_takeaways %></td>
+        <td><%= puppy.score_tackles %></td>
+        <td><%= puppy.score_penalties %></td>
+        <td><%= link_to 'Edit', edit_puppy_path(puppy) %></td>
+        <td><%= link_to 'Delete', puppy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Puppy', new_puppy_path %>
+</div>

@@ -1,0 +1,131 @@
+<style type="text/css">
+  
+  .plusminusdiv { 
+   display:inline-block;
+   width: 20px;
+   height: 20px;
+   border-radius: 10px;
+   color:white;
+   font-weight: 800;
+   cursor: pointer;
+  }
+
+  .plus {  background-color: #5Cb85C; }
+  .minus {  background-color: #D9534F; }
+  .score { 
+   vertical-align: middle;
+   padding-top: 20px;
+   padding-bottom: 20px;
+
+   font-family: 'Cubano';
+   font-size:20px;   
+  }
+</style>
+<script type="text/javascript">
+  
+function preview() { 
+
+  window.open("/rankings", "","width=900, height=950,  scrollbars=yes");
+}
+
+</script>
+<h2 >Dashboard - <a href="javascript:preview()">preview</a></h2>  
+<div class="col-md-8">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Thumbnail</th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Touchdowns</th>
+      <th>Field Goals</th>
+      <th>Takeaways</th>
+      <th>Tackles</th>
+      <th>Penalties</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puppies.each do |puppy| %>
+      <tr>
+        <td><%= image_tag puppy.pic %></td>
+        <td><%= puppy.name %></td>
+        <td><%= puppy.team_name %></td>
+      
+        <td id="<%= puppy.id %>" class="tdscores" align="center">
+        <div id="score_touchdowns_<%= puppy.id %>" class="score pct">   <%= puppy.score_touchdowns %> </div>
+         <div class="plusminusdiv minus" onclick="javascript:upd(<%= puppy.id %>, 'score_touchdowns', 'minus')"> - </div> 
+         <div class="plusminusdiv plus" onclick="javascript:upd(<%= puppy.id %>, 'score_touchdowns', 'plus')"> + </div> 
+        </td>
+        <td id="<%= puppy.id %>" class="tdscores" align="center">
+        <div id="score_field_goals_<%= puppy.id %>" class="score"><%= puppy.score_field_goals %></div>
+         <div class="plusminusdiv minus" onclick="javascript:upd(<%= puppy.id %>, 'score_field_goals', 'minus')"> - </div>  
+         <div class="plusminusdiv plus" onclick="javascript:upd(<%= puppy.id %>, 'score_field_goals', 'plus')"> + </div> 
+        </td>
+        <td id="<%= puppy.id %>" class="tdscores" align="center">
+        <div  id="score_takeaways_<%= puppy.id %>" class="score"><%= puppy.score_takeaways %></div>
+         <div class="plusminusdiv minus" onclick="javascript:upd(<%= puppy.id %>, 'score_takeaways', 'minus')"> - </div> 
+         
+         <div class="plusminusdiv plus" onclick="javascript:upd(<%= puppy.id %>, 'score_takeaways', 'plus')"> + </div> 
+        </td>
+        <td id="<%= puppy.id %>" class="tdscores" align="center">
+        <div id="score_tackles_<%= puppy.id %>" class="score"><%= puppy.score_tackles %></div>
+         <div class="plusminusdiv minus" onclick="javascript:upd(<%= puppy.id %>, 'score_tackles', 'minus')"> - </div>
+         <div class="plusminusdiv plus" onclick="javascript:upd(<%= puppy.id %>, 'score_tackles', 'plus')"> + </div> 
+
+        </td>
+        <td id="<%= puppy.id %>" class="tdscores" align="center" >
+        <div id="score_penalties_<%= puppy.id %>" class="score">  <%= puppy.score_penalties %> </div>
+         <div class="plusminusdiv minus" onclick="javascript:upd(<%= puppy.id %>, 'score_penalties', 'minus')"> - </div> 
+         <div class="plusminusdiv plus" onclick="javascript:upd(<%= puppy.id %>, 'score_penalties', 'plus')"> + </div> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Puppy', new_puppy_path %>
+</div>
+
+<script type="text/javascript">
+
+
+function upd(id, field, action) {
+
+   var value = $('#' + field + '_' + id).html()
+    action == 'plus' ? value++ : value--
+   var arr = {}
+   var parr = {}
+   parr[field] = value
+   arr['puppy'] = parr
+
+  var  d = JSON.stringify(arr)
+   $.ajax( {
+    type :"PUT", 
+    async :true, 
+    url : '/admin/puppies/'+id+'.json',
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: d ,
+    success: function(data) {  
+          if (data.id) {
+            console.log('updated ok')
+            $('#' + field + '_' + id).html(data[field])
+            }
+          else 
+         {   
+             console.log('updated not ok')
+            }
+               },
+    error: function(error) {
+                console.log('updated not ok')
+                }
+        });  
+ 
+}
+
+
+
+</script>

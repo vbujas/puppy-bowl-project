@@ -1,0 +1,92 @@
+<%= form_for(@puppy) do |f| %>
+  <% if @puppy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@puppy.errors.count, "error") %> prohibited this puppy from being saved:</h2>
+
+      <ul>
+      <% @puppy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-7">
+  <div class="col-md-6 form-group">
+    <%= f.label "Name" %><br>
+    <%= f.text_field :name,  class: "form-control" %>
+  </div>
+  <div class="col-md-6 form-group">
+    <%= f.label "Breed" %><br>
+    <%= f.text_field :breed, class: "form-control"  %>
+  </div>
+  </div>
+  <div class="col-md-7">
+  <div class="col-md-6 form-group">
+    <%= f.label "Gender" %><br>
+   <%= f.select :sex,   [['Male', 'Male'], ['Female', 'Female']]  ,  { } , {  class: 'form-control',  } %>  
+  </div>
+    <div class="col-md-6 form-group">
+    <%= f.label "Belongs to team" %><br>
+   <%= f.select :team_name, %w[Select Fluff Ruff] , {}, {  class: 'form-control'} %>  
+  </div>
+  </div>
+   <div class="col-md-7 form-group">
+  <div class="col-md-8 form-group">
+    <%= f.label "Fun Fact" %><br>
+    <%= f.text_area :fun_fact, class: "form-control"  %>
+  </div>
+    <div class="col-md-4 form-group">
+    <%= f.label "Age" %><br>
+    <%= f.text_field :age, class: "form-control"  %>
+  </div>
+  </div>
+   <div class="col-md-7">
+  <div class="col-md-6 form-group">
+    <%= f.label "Touchdowns" %><br>
+    <%= f.number_field :score_touchdowns, class: "form-control"  %>
+  </div>
+  <div class="col-md-6 form-group">
+    <%= f.label "Penalties" %><br>
+    <%= f.number_field :score_penalties, class: "form-control"  %>
+  </div>
+   </div>
+    <div class="col-md-7">
+  <div class="col-md-6 form-group">
+    <%= f.label "Tekeaways" %><br>
+    <%= f.number_field :score_takeaways, class: "form-control"  %>
+  </div>
+
+  <div class="col-md-6 form-group">
+    <%= f.label "Tackles" %><br>
+    <%= f.number_field :score_tackles, class: "form-control"  %>
+  </div>
+  </div>
+  <div class="col-md-7">
+    <div class="col-md-6 form-group">
+    <%= f.label "Field Goals" %><br>
+    <%= f.number_field :score_field_goals, class: "form-control"  %>
+  </div>
+   
+    <div class="col-md-6 form-group">
+     
+  </div>
+  </div>
+
+   <div class="col-md-7 form-group">
+  <div class="col-md-12 form-group">
+    <%= f.label :pic %><br>
+    <%= f.text_field :pic, class: "form-control"  %>
+
+  </div>
+  </div>
+     <div class="col-md-7 form-group">
+  <div class="col-md-12 form-group">
+    <label> Big picture (draft page)</label><br>
+    <%= f.text_field :big_pic, class: "form-control"  %>
+
+  </div>
+  </div>
+  <div class="col-md-7 form-group">
+    <%= f.submit "Create / Update", class: "btn btn-primary" %>
+  </div>
+<% end %>

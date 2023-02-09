@@ -1,0 +1,160 @@
+<style type="text/css">
+  
+.poll-div { 
+
+ background-image: url('/assets/vote_not_chosen.png');
+ background-repeat: no-repeat;
+ width: 261px;
+ height: 149px;
+ padding-top: 60px;
+ margin-left: 15px;
+
+}
+.poll-div-hover { 
+
+ background-image: url('/assets/vote_hover.png');
+ background-repeat: no-repeat;
+
+}
+
+.poll-div-chosen { 
+  background-image: url('/assets/vote_chosen.png');
+}
+.pct {
+
+  font-family: "Cubano";
+  color: #ffffff;
+  font-size: 36;
+} 
+</style>
+
+<script type="text/javascript">
+  var vo = ''
+
+ $(document).ready( function() { 
+ $('#team_ruff').on('click', function() {
+    $('#team_ruff').addClass('poll-div-chosen')
+    $('#team_fluff').removeClass('poll-div-chosen') 
+     $('#team_ruff').unbind("mouseover")
+     $('#team_ruff').unbind("mouseout")
+      $('#team_fluff').on("mouseover", fluff_over)
+     $('#team_fluff').on("mouseout", fluff_out)
+     removehover('#team_fluff')
+    vo = 'R'
+ }); 
+
+  $('#team_fluff').on('click', function() {
+     $('#team_fluff').addClass('poll-div-chosen')
+    $('#team_ruff').removeClass('poll-div-chosen')
+     $('#team_fluff').unbind("mouseover")
+     $('#team_fluff').unbind("mouseout")
+     $('#team_ruff').on("mouseover", ruff_over)
+     $('#team_ruff').on("mouseout", ruff_out)
+     removehover('#team_ruff')
+
+    vo = 'F'
+ });
+  
+ruff_over();
+fluff_over();
+ruff_out();
+fluff_out();
+
+  $('#vote_btn').on('click', function() {
+
+    if (vo !='') {
+      $.ajax( {
+    type :"POST", 
+    async :true, 
+    url : '/dovote.json',
+    dataType: 'json',
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify( { user : { vote : vo } }) ,
+    success: function(data) {  
+          if (data.id) {
+          
+         //  console.log(data)
+             window.location.href = "/voted?tid="+data.id;  
+            }
+          else 
+         {   
+          //  $('#done_draft').on('click', createteam) 
+            }
+               },
+    error: function(error) {
+
+            //   $('#done_draft').on('click', createteam) 
+                }
+        });  
+    }
+    else {
+    alert('Please select a team.')
+
+    }
+ });
+
+
+function ruff_over() {
+  $('#team_ruff').on('mouseover', function() {
+    addhover('#team_ruff') 
+ }); }
+
+function fluff_over() {
+  $('#team_fluff').on('mouseover', function() {
+    addhover('#team_fluff')
+ });  }
+
+function ruff_out() {
+    $('#team_ruff').on('mouseout', function() {
+    removehover('#team_ruff')
+ }); 
+}
+function fluff_out(){
+  $('#team_fluff').on('mouseout', function() {
+    removehover('#team_fluff')
+ }); 
+}
+
+
+ function addhover(el) { 
+      $(el).addClass('poll-div-hover')
+ }
+
+ function removehover(el) {
+      $(el).removeClass('poll-div-hover')
+ } 
+
+ 
+
+});
+</script>
+
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? %>
+      <div class="col-md-11  col-sm-11 col-xs-11 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+        <div class="nopadding created-text" align="center"> CAST YOUR VOTE</div>
+        <div class="thank-text" align="center"> It’s Ruff vs. Fluff in this year’s Puppy Bowl. Who do you think will win? Vote now! </div>
+      <!-- </div> -->
+        <div class="thank-text" align="center" style="margin-top:25px;margin-left:20px;">
+        
+         <div class="row" align="center">
+           <div class=" poll-div" style="display:inline-block" align="center" id="team_ruff" >
+            <%= image_tag "ruff_big.png", class: "img-responsive center-block" %>
+           </div>
+           <div class=" poll-div" align="center" style="display:inline-block" id="team_fluff">
+            <%= image_tag "fluff_big.png", class: "img-responsive center-block" %>
+           </div>
+           
+                <div class="col-md-11 col-sm-11 col-xs-11" style="margin-top:35px;">
+        <%= image_tag "vote_button.png", :'data-alt-src' => "assets/vote_button_hover.png", class: "img-responsive pointer shadowed center-block", id: "vote_btn" %>
+        </div>
+          <div class="col-md-1 col-sm-1 col-xs-1"> </div>
+          </div>
+        </div>
+   
+      </div>
+      <% end %>
+
+  </div>
+</div>

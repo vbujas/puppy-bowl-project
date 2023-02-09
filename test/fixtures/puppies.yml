@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  TEAM_ID: 1
+  PUPPY_NAME: MyString
+  PUPPY_BREED: MyString
+  PUPPY_SEX: MyString
+  PUPPY_AGE: 1
+  PUPPY_FUN_FACT: MyString
+  SCORE_TOUCHDOWNS: 1
+  SCORE_PENALTIES: 1
+  SCORE_TAKEAWAYS: 1
+  SCORE_TACKLES: 1
+  PUPPY_PIC: MyString
+
+two:
+  TEAM_ID: 1
+  PUPPY_NAME: MyString
+  PUPPY_BREED: MyString
+  PUPPY_SEX: MyString
+  PUPPY_AGE: 1
+  PUPPY_FUN_FACT: MyString
+  SCORE_TOUCHDOWNS: 1
+  SCORE_PENALTIES: 1
+  SCORE_TAKEAWAYS: 1
+  SCORE_TACKLES: 1
+  PUPPY_PIC: MyString

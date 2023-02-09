@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Puppy name:</strong>
+  <%= @puppy.name %>
+</p>
+
+<p>
+  <strong>Puppy breed:</strong>
+  <%= @puppy.breed %>
+</p>
+
+<p>
+  <strong>Puppy sex:</strong>
+  <%= @puppy.sex %>
+</p>
+
+<p>
+  <strong>Puppy age:</strong>
+  <%= @puppy.age %>
+</p>
+
+<p>
+  <strong>Puppy fun fact:</strong>
+  <%= @puppy.fun_fact %>
+</p>
+
+<p>
+  <strong>Score touchdowns:</strong>
+  <%= @puppy.score_touchdowns %>
+</p>
+
+<p>
+  <strong>Score penalties:</strong>
+  <%= @puppy.score_penalties %>
+</p>
+
+<p>
+  <strong>Score takeaways:</strong>
+  <%= @puppy.score_takeaways %>
+</p>
+
+<p>
+  <strong>Score tackles:</strong>
+  <%= @puppy.score_tackles %>
+</p>
+
+<p>
+  <strong>Puppy pic:</strong>
+  <%= @puppy.pic %>
+</p>
+
+<%= link_to 'Edit', edit_puppy_path(@puppy) %> |
+<%= link_to 'Back', puppies_path %>

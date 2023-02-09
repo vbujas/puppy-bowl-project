@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <p class="welcome text-center">ALL THE PUPS</p>
+      <p class="welcome text-center">You need 3 pups for your team.</p>
+      <p class="welcome text-center"><%= current_user.name ? current_user.name : current_user.first_name %>, team</p>
+      <div class="col-md-8 col-centered">
+        <div class="row">
+          <div class="col-xs-2 col-md-4">
+            <div class="blue-bg">
+              <%= image_tag "pets/empty_dog.png", class: "img-responsive" %>
+            </div>
+          </div>
+          <div class="col-xs-2 col-md-4">
+            <div class="blue-bg">
+              <%= image_tag "pets/empty_dog.png", class: "img-responsive" %>
+            </div>
+          </div>
+          <div class="col-xs-2 col-md-4">
+            <div class="blue-bg">
+              <%= image_tag "pets/empty_dog.png", class: "img-responsive" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <select class="image-picker show-html" data-limit="3" multiple="multiple">
+      <% @puppies.each_with_index do |puppy, index| %>
+        <option data-img-src="assets/<%= puppy.pic %>" data-img-label="<%= puppy.name %>" value="<%= index %>"></option>
+      <% end %>
+    </select>
+  </div>
+<% end %>
+<%= render "shared/sign_in_modal" %>
+<%= render "shared/sign_up_modal" %>

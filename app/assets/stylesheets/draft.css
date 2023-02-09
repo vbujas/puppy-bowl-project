@@ -1,0 +1,780 @@
+  @font-face {
+    font-family: Cubano;
+    src: url('/assets/cubano-regular-webfont.woff');
+}
+
+  @font-face {
+    font-family: ProximaNovaSemibold;
+    src: url('/assets/Proxima-Nova-Semibold.woff');
+}
+ 
+ .pupinfo-white { 
+   font-family: 'ProximaNovaSemibold';
+  font-size: 16px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+
+  .pupinfo-yellow { 
+   font-family: 'ProximaNovaSemibold';
+  font-size: 16px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #FAE53E;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+ }
+  
+    .team-team { 
+  font-family: 'Myriad Pro';
+  font-size: 12pt;
+  color: #FAE53E;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+ }
+
+ 
+  .choosemore { 
+   font-family: 'ProximaNovaSemibold';
+  font-size: 15px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #ffffff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+
+.yellow-rule { 
+  height:2px;
+  padding:0px;
+   border: 0;
+  margin:3px;
+  color: #FAE53E;
+  background-color: #FAE53E;
+ }
+
+
+.small-rule { 
+   border: 0;
+  height:1px;
+  margin-top:14px;
+  color: #ffffff;
+  background-color: #ffffff;
+ }
+
+.small-rule-choose { 
+   border: 0;
+  height:1px;
+  margin-top:16px;
+  opacity: 0.7;
+  color: #ffffff;
+  background-color: #ffffff;
+ }
+.modalbg {  
+  background: url('/assets/bg.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+
+.checkedtick { 
+ font-size: 14px;
+ background-color: #FAEB4E;
+ border-radius: 10px;
+ width:20px;
+ height: 20px;
+ position: absolute;
+ top:-9px;
+ left:86px;
+}
+
+ .small-rule-pacifico { 
+   border: 0;
+  height:2px;
+  /*margin-top:24px;*/
+  margin-bottom: 0px;
+  color: #ffffff;
+  background-color: #ffffff;
+  opacity: 0.6;
+ }
+
+   .small-rule-yellow {  
+   border: 0;
+  height:2px;
+  margin-top:10px;
+  color: #FAE53E;
+  background-color: #FAE53E;
+ }
+
+  .pacifico-rule-yellow {  
+   border: 0;
+  height:2px;
+  margin-top:22px;
+  color: #FAE53E;
+  background-color: #FAE53E;
+ } 
+ 
+ .see-all { 
+  font-family: 'Cubano';
+  font-size: 12pt;
+  text-shadow: 1px 1px #1b3e58;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+ }
+
+.see-all a {
+  color: #fff;
+}
+
+.see-all a:hover {
+  text-decoration: none;
+}
+
+
+ .see-all-img {
+   display: inline-block;
+ }
+
+  .your-team { 
+  font-family: 'Cubano';
+  font-size: 27px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+
+ .team-caroussel { 
+
+  font-family: 'Cubano';
+  font-size: 10pt;
+    color: #FAE53E;
+  height:1.1em;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  padding: 0px;
+ }
+
+
+  .puppy-name { 
+  font-family: 'Cubano';
+  font-size: 10pt;
+  text-align: center;
+  color: #FAE53E;
+  height:1.1em;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  padding: 0px;
+ }
+
+  .puppy-name-team { 
+  font-family: 'Cubano';
+  font-size: 10pt;
+  text-align: center;
+  color: #FAE53E;
+  height:1.1em;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  padding: 0px;
+ }
+
+ .team-title { 
+  padding:0px;
+  font-family: 'Proxima Nova Black';
+  color: #ffffff;
+  font-size: 14pt;
+  line-height: 4px;
+  height:1em;
+  vertical-align: top;
+ }
+
+ .pupname {
+  font-family: 'Cubano';
+  font-size: 40px;
+  /*text-shadow: 2px 2px #1b3e58;*/
+  color: #ffffff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+ .draftthis { 
+  padding-top:20px;
+  padding-left: 0px;
+ }
+ .pointer {  cursor: pointer;}
+
+ .nopadding { padding: 0px;}
+
+.shadowed {
+    -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+    filter: url("data:image/svg+xml;utf8,<svg height='0' xmlns='http://www.w3.org/2000/svg'><filter id='drop-shadow'><feGaussianBlur in='SourceAlpha' stdDeviation='4'/><feOffset dx='6' dy='6' result='offsetblur'/><feFlood flood-color='rgba(0,0,0,0.5)'/><feComposite in2='offsetblur' operator='in'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter></svg>#drop-shadow");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#444')";
+}
+
+.shadowedpupp {
+    -webkit-filter: drop-shadow(1px 1px 25px rgba(0,0,0,0.5));
+    filter: url("data:image/svg+xml;utf8,<svg height='0' xmlns='http://www.w3.org/2000/svg'><filter id='drop-shadow'><feGaussianBlur in='SourceAlpha' stdDeviation='4'/><feOffset dx='6'dy='6' result='offsetblur'/><feFlood flood-color='rgba(0,0,0,0.5)'/><feComposite in2='offsetblur' operator='in'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter></svg>#drop-shadow");
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#444')";
+}
+
+
+
+ 
+.arrow-left {
+   position: absolute;
+  top:150px;
+  left:0px;
+  font-size: 28px;
+  font-weight: 100;
+  display:block;
+  opacity:0.5;
+  color: #ffffff;
+}
+
+.arrow-right {
+  position:absolute;
+  top:150px;
+  left:50%;
+  font-size: 28px;
+  font-weight: 100;
+  display:block;
+  opacity:0.5;
+  color: #ffffff;
+}
+
+.arrow-left:hover {
+  opacity:0.9;
+}
+.arrow-right:hover {
+  opacity:0.9;
+}
+ 
+
+.fullheight {
+ position: relative;
+ height: 100%; }
+.nopadding { padding: 0px; }
+.team-pic {  margin-top: 3px;
+             margin-bottom:3px;
+               }
+
+
+ .hidden {
+    
+   display: none;
+}
+.shown {
+   display: block;
+} 
+
+ .full_op {
+    
+   opacity: 1;
+}
+.no_op {
+   opacity: 0;
+} 
+
+.thumb_div { 
+ position: relative;
+ max-width: 100px;
+ margin-left: 9px;
+ margin-right: 9px;
+}
+
+.thumb_div_teams { 
+ position: relative;
+ max-width: 100px;
+ margin-right: 8px;
+}
+
+.remove_div {
+ position: absolute;
+ top:0px;
+ margin-left:5px;
+ padding-top: 40px;
+ width: 84px;
+ height: 84px;
+ background-color:rgba(2, 85, 155, 0.7);
+ padding-left:5px;
+}
+
+.pup_overlay_div {
+ position: absolute;
+ top:0px;
+ padding-top: 15px;
+ width: 100%;
+ height: 100%;
+ background-color:rgba(2, 85, 155, 0.7);
+ padding-left:2px;
+}
+
+.pup_overlay_draft {
+ position: absolute;
+ top:0px;
+  padding-top: 30px;
+  padding-left:0px;
+  vertical-align: middle;
+ width: 100%;
+ height: 100%;
+ background-color:rgba(2, 85, 155, 0.7);
+}
+
+.remove-info-icon { 
+   max-width: 75px;
+} 
+
+    .created-text { 
+  font-family: 'Cubano';
+  font-size: 22pt;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #FAE53E;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin: 0;
+ }
+
+ .thank-text { 
+   font-family: 'Proxima Nova Bold';
+  font-size: 15px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  opacity: 0.9;
+ }
+
+  .fb-friends-text { 
+   font-family: 'Proxima Nova Bold';
+  font-size: 15px;
+  text-shadow: 1px 1px #1b3e58;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+ 
+  .pacifico-yellow { 
+  font-family: 'Pacifico', cursive;
+  font-size: 19pt;
+  color: #FAE53E;
+ } 
+
+   .fantasy-team { 
+  font-family: 'Pacifico', cursive;
+  font-size: 17pt;
+  color: #FAE53E;
+ } 
+
+   .pacifico-choose { 
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  color: #FAE53E;
+ } 
+
+ .thumb-empty { 
+  background-color: #027EBA;
+  border:3px solid #02559B;
+ }
+  .thumb-empty-team { 
+  background-color: #027EBA;
+  border:3px solid #FAEB4E;
+ }
+
+ .thumb-locked { 
+   border:3px solid #EFC903;
+   background-color: #027EBA; }
+
+ .thumb-chosen { 
+    background-color: #027EBA;
+    border:3px solid #FAEB4E; 
+  }
+
+  .thumb-chosen-team { 
+    background-color: #027EBA;
+     border:3px solid #FAEB4E; 
+   }
+
+ .padding2 { padding:2px; }
+.maxw { max-width: 115px; }
+.maxwdraft { max-width: 113px; }
+.maxwteams { max-width: 115px; }
+
+.minw { min-width: 80px; }
+
+.modal-blue { background-color:  #027EBA; }
+
+
+/* ++++++++++++BEGIN FINAL STATS PAGE +++++++++++++++++++*/
+
+.puppy-stats-div { 
+ background-color: rgba(0,0,0, 0.4);
+ padding-bottom:4px;
+ padding-left: 0px;
+ padding-right: 0px;
+ padding-top: 0px;
+ /*padding: 0px 0px 0px 0px; */
+
+}
+
+.middlediv { 
+  padding-right:5px;
+ padding-left:5px;
+
+
+}
+.maxwstats { max-width: 145px; }
+.maxwscores { max-width: 165px; }
+
+
+.score-value-div { 
+  display: inline-block;
+  max-width: 26%;
+  margin-right: 12px;
+}
+ .score-div { 
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+ .score-total-div { 
+
+    margin:11px;
+    height: 32px;
+    padding-top:3px;
+    vertical-align: middle;
+    background-color: rgba(0,0,0, 0.4);
+
+}
+
+ .ranking-text { 
+   font-family: 'ProximaNovaSemibold';
+  font-size: 13px;
+   
+  color: #ffffff;
+  font-weight: 200;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+
+.parameter-team { 
+  font-family: 'Proxima Nova Black';
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 200;
+ }
+
+.yourteam-score { 
+   font-family: 'ProximaNovaSemibold';
+  font-size: 20px;
+  /*text-shadow: 1px 1px #1b3e58;*/
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+ }
+ 
+ .pct {
+
+  font-family: "Cubano";
+  color: #ffffff;
+  font-size: 40px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+ .pct-white {
+
+  font-family: "Cubano";
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 1em;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.puppy-name-finalstats {
+   font-family: 'Cubano';
+  font-size: 15pt;
+  text-align: center;
+  color: #FAE53E;
+  height:1.1em;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  margin-bottom: 6px;
+  padding: 0px;
+}
+
+.puppy-score-no {
+   font-family: 'Cubano';
+  font-size: 13pt;
+  text-align: center;
+  display: inline-block;
+  white-space:nowrap;
+  color: #FAE53E;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  padding: 0px;
+}
+
+.point-values {
+  font-family: 'Cubano';
+  font-size: 20px;
+  text-align: center;
+  color: #FAE53E;
+  height:1.1em;
+  margin-top: 4px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  margin-right: 0px;
+  margin-bottom: 6px;
+  padding: 0px;
+
+}
+
+#row-teams {
+     max-width: 920px;
+     position: absolute;
+     margin: auto;
+     top: 567px; left: 0px; bottom: 0px; right: 0px;
+
+  }
+
+ #alert { 
+ 
+   position:absolute;
+    left:20px;
+    top:75px;
+    width:100%
+ } 
+
+ #alerttext { 
+    padding-top:7px;
+    padding-left:6px; 
+    padding-right:0px; 
+    position:absolute;
+    left:50px;
+    top:0px; 
+    height:35px; 
+    width:98%; 
+    margin-left:0px;
+   
+ }
+
+ #alertclose { 
+   position:absolute;
+   left:630px;
+   top:0px;
+   width:35px;
+   height:35px
+
+ } 
+
+  #breedtext { width:65%; }
+      #funtext { width:65%; }
+
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+#row-teams {
+     width: 920px;
+     position: absolute;
+     margin: auto;
+     top: 567px;
+     left:0px;
+     right:0px;
+     bottom: 0px;
+
+
+  }
+}
+
+/* ++++++++++++END FINAL STATS PAGE +++++++++++++++++++*/
+
+ 
+
+@media (max-width: 930px) {
+    .small-rule-choose { max-width: 60px; }
+    .ruff-logo-edit-page {  padding-top:0px; }
+      #row-teams { 
+    position: absolute;
+    margin: auto;
+    top: 565px; left: 0; bottom: 0; right: 0;
+    width:100%; 
+ }
+
+ #alert { 
+    position: absolute;
+    left:-20px;
+    top:83px;
+    width: 91%;
+     height:35px;
+ }
+
+  #alerttext { 
+    padding-top:7px;
+    padding-left:6px; 
+    padding-right:0px; 
+    position:absolute;
+    left:45px;
+    top:0px; 
+    height:35px; 
+    width:98%; 
+    margin-left:0px;
+   
+ }
+
+ #alertclose { 
+   position:absolute;
+   left:590px;
+   top:0px;
+   width:35px;
+   height:35px
+
+ }
+
+
+}
+
+  @media (max-width: 930px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+#row-teams {
+     max-width: 920px;
+     position: absolute;
+     margin: auto;
+     top: 567px; left: 10px; bottom: 0px; right: 0px;
+
+  }
+}
+
+ @media (max-width: 750px) {
+/* CSS rules here for screens lower than 750px */
+      .minw { min-width: 100px; }
+       #draft-thumbs-div { text-align: center;}
+  
+        #row-teams { 
+    position: absolute;
+     margin: auto;
+  top: 727px; 
+  left: 10px;
+   bottom: 0;
+    right: 0;
+   
+ }
+ 
+   
+   #alert { 
+    position: absolute;
+    left:-20px;
+    top:100px;
+    width: 580px;
+     height:45px;
+ }
+
+  #alerttext { 
+    padding-top:7px;
+    padding-left:6px; 
+    padding-right:0px; 
+    position:absolute;
+    left:45px;
+    top:0px; 
+    height:45px; 
+    width:540px; 
+    margin-left:0px;
+   
+ }
+ #warning { 
+   margin-top:17px;
+ }
+
+ #alertclose { 
+   position:absolute;
+   left:540px;
+   top:0px;
+   width:45px;
+   height:55px
+
+ }
+
+    }
+
+ 
+
+    @media (max-width: 600px) {
+
+        .pointer-close { font-size: 16px; 
+        padding-left: 5px;
+         padding-right: 5px;
+       background-color: transparent;
+        
+        }
+ 
+      #row-teams { 
+    position: absolute;
+     margin: auto;
+  top: 727px; 
+  left: 10px;
+   bottom: 0;
+    right: 0;
+   
+ }
+  #alert { 
+    position: absolute;
+    left:0px;
+    top:83px;
+    width: 90%;
+     height:65px;
+ }
+
+  #alerttext { 
+    padding-top:7px;
+    padding-left:6px; 
+    padding-right:26px; 
+    position:absolute;
+    left:45px;
+    top:0px; 
+    height:65px; 
+    width:91%; 
+    margin-left:0px;
+   
+ }
+
+ #alertclose { 
+   position:absolute;
+   left:89%;
+   top:15px;
+   width:35px;
+   height:65px
+
+ }
+
+
+}
+
+ @media (max-width: 320px) {
+
+      #breedtext { width:55%; }
+      #funtext { width:55%; }
+
+        
+        }
+

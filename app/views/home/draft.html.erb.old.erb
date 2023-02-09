@@ -1,0 +1,171 @@
+<div class="row">
+  <!-- <div class="col-md-12"> -->
+    <% if user_signed_in? %>
+    <div class="col-md-12" style="height:100%; position:relative;">
+    <div id="user_id" style="display:none"><%= current_user.id %></div>
+     <div class="col-md-1 col-sm-1 col-xs-1 nopadding fullheight">  
+    <span id="prev" class="fa fa-chevron-left arrow-left"></span>
+    </div>
+  
+  <!-- <div class="row"> -->
+    <div id="puppy_pics_caroussel" class="col-md-4 col-xs-4 col-sm-4  transition-left nopadding"> 
+     <% @puppies.each do |puppy| %>
+    <div id="<%= 'pupp_'+ puppy.id.to_s %>" class="col-md-12 nopadding hidden pupimagediv">   <%= image_tag  puppy.big_pic, class: "img-responsive center-block" %> </div>
+     <% end %>
+    </div>
+
+    <div id="puppy_sheet_caroussel" class="col-md-6 col-xs-6 col-sm-6 transition-left nopadding">
+     <% @puppies.each do |puppy| %>
+     <div class="sheet hidden">
+       <div id="name_<%= puppy.id.to_s %>" class="row pupname nopadding"> <%= puppy.name %> </div>
+       <div class="row puppy-name nopadding"> Team</div>
+       <div class="row nopadding"> 
+         <% if  puppy.team_name == 'Ruff' %>
+        <%= image_tag "ruff.png", class: "img-responsive team-pic" %>
+        <% else %>
+        <%= image_tag "fluff.png", class: "img-responsive team-pic" %>
+        <% end %>
+        </div>
+        <div class="row nopadding">
+           <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+           <span class="pupinfo-white"> BREED(S): </span>
+           <span class="pupinfo-yellow"><%= puppy.breed %></span>
+           </div> 
+         </div>
+
+         <div class="row nopadding">
+           <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+           <span class="pupinfo-white"> SEX: </span>
+           <span class="pupinfo-yellow"><%= puppy.sex %></span>
+           </div> 
+         </div>
+        <div class="row nopadding">
+           <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+           <span class="pupinfo-white"> AGE: </span>
+           <span class="pupinfo-yellow"><%= puppy.age %></span>
+           </div> 
+         </div>
+
+        <div class="row nopadding">
+           <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+           <span class="pupinfo-white"> FUN FACT: </span>
+           <span class="pupinfo-yellow"><%= puppy.fun_fact %></span>
+           </div> 
+         </div>
+
+         <div id="thumb_<%= puppy.id.to_s  %>" style="display:none;"><%= puppy.pic %></div>
+         <div class="draftthis" align="left">
+          <%= image_tag "draft_this_button.png", class: "img-responsive left-block shadowed pointer draftbutton", id:  puppy.id.to_s %>
+         </div>
+     </div>
+       <% end %>
+     </div>
+    <!-- </div> -->
+    <div class="col-md-1 col-xs-1 col-sm-1 nopadding fullheight" >  
+    <span id="next" class="fa fa-chevron-right arrow-right"></span>
+      </div>
+      </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 see-all nopadding" align="right">
+      <a href="/">see all the puppies<%= image_tag "see-all.png", class: "img-responsive see-all-img" %></a>
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 nopadding">
+    <hr class="yellow-rule" >
+     <hr class="yellow-rule" >
+     </div> 
+     <div class="col-md-3 col-xs-3 col-sm-3">
+     <div class="col-md-12 col-xs-12 col-sm-12 nopadding your-team"  align="center"> YOUR TEAM </div>
+     <div class="col-md-12 col-xs-12 col-sm-12 nopadding"  align="center"> 
+      <div class="col-md-2 col-xs-1 col-sm-2 nopadding">
+       <hr class="small-rule"> 
+       </div>
+      <div class="col-md-8 col-xs-10 col-sm-8 pacifico-choose"> 
+       choose 3
+        </div>
+      <div class="col-md-2 col-xs-1 col-sm-2 nopadding"> <hr class="small-rule"> </div>
+     </div>
+      <div class="col-md-12 col-xs-12 col-sm-12 choosemore" id="choosemore" align="center" > choose 3 more </div>
+      </div>
+     <div class="col-md-9 col-xs-9 col-sm-9">  </div>
+
+     <div class="col-md-2 col-xs-2 col-sm-2 nopadding"  align="left"> 
+       <div id="thumb_div_1" class="thumb_div">
+       <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_1" %> 
+       <div id="remove_div_1" class="pup_overlay_draft  no_op">
+       <%= image_tag "remove.png", class: "img-responsive left-block", id: "remove_1" %> 
+       </div>
+       </div>    
+       <div class="col-md-12 col-xs-12 col-sm-12 puppy-name" id="pupp_thumb_name_1" align="center">   </div>
+      </div>
+
+     <div class="col-md-2 col-xs-2 col-sm-2 nopadding" align="left"> 
+
+       <div id="thumb_div_2" class="thumb_div">
+      <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_2" %> 
+          <div id="remove_div_2" class="pup_overlay_draft  no_op">
+       <%= image_tag "remove.png", class: "img-responsive left-block", id: "remove_2" %> 
+       </div>
+      </div>
+       <div class="col-md-12 col-xs-12 col-sm-12 puppy-name" id="pupp_thumb_name_2" align="center">  </div>
+      </div>
+
+     <div class="col-md-2 col-xs-2 col-sm-2 nopadding" align="left">
+     
+       <div id="thumb_div_3" class="thumb_div">
+       <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_3" %> 
+         <div id="remove_div_3" class="pup_overlay_draft  no_op">
+       <%= image_tag "remove.png", class: "img-responsive left-block", id: "remove_3" %> 
+       </div>
+       </div>   
+       <div class="col-md-12 col-xs-12 col-sm-12 puppy-name" id="pupp_thumb_name_3" align="center">   </div>
+       </div>
+
+     <div class="col-md-2 col-xs-2 col-sm-2 nopadding" style="padding-top:18px;"> <%= image_tag "blue_button_done.png", class: "img-responsive right-block shadowed pointer no_op", id: "done_draft" %> </div>
+ 
+    <% else %>
+      <p class="welcome text-center">Welcome to the 2015 PUPPY BOWL FANTASY DRAFT!</p>
+      <div class="row">
+        <a href="#myModal" data-toggle="modal" data-target="#myModal">
+          <%= image_tag "create_team_button.png", class: "img-responsive center-block" %>
+        </a>
+      </div>
+      <div class="row">
+        <p class="have-team">Already have a team?<a href="#">EDIT YOUR PICKS</a></p>
+      </div>
+      <div class="row">
+        <%= image_tag "landing_art.png", class: "img-responsive center-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% unless user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="col-md-10"> -->
+            <div class="text-center">
+            <p class="welcome-to fancy"><span>welcome to</span></p>
+            <p class="fantasy-draft">fantasy draft</p>
+            <!-- <hr/> -->
+            <div id="sign-in-buttons">
+              <p class="welcome-text">Sign in with Facebook, Twitter or through e-mail to create <br>
+                your puppy team </p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-facebook"><span>F</span> Sign in with Facebook</button>'.html_safe, user_omniauth_authorize_path(:facebook) %></p>
+              <p><%= link_to '<button type="button" class="btn btn-social btn-twitter"><span>t</span> Sign in with Twitter</button>'.html_safe, user_omniauth_authorize_path(:twitter) %></p>
+              <p><button type="button" class="btn btn-social btn-email" id="sign-in-email"><span>m</span>sign in with email</button></p>
+              <p class="have-team-2">- already have a team? -</p>
+              <p><a href="#" class="edit-picks">Edit your picks</a></p>
+            </div>
+            <div id="email-signup" style="display: none;">
+              <%= render "devise/registrations/new" %>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

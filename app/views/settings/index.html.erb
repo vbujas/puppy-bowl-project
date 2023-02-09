@@ -1,0 +1,45 @@
+<div class="col-md-4">
+  <h2>Settings</h2>
+  <%= form_for(@setting) do |f| %>
+    <% if @setting.errors.any? %>
+      <div id="error_explanation">
+        <!-- <h2><%#= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2> -->
+
+        <ul>
+        <% @setting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <fieldset>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :begin_date %>
+            <%= f.datetime_field :begin_date, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :end_date %>
+            <%= f.datetime_field :end_date, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "Save", class: "btn btn-lg btn-success" %>
+    </fieldset>
+  <% end %>
+
+  <div class="row"> 
+  <p> </p>
+   <p> Current status of the app is <strong><%= session['status'] %> </strong> </p>
+   <p> All tmes are EST!</p>
+   <p> Please enter the begin dates and times in the YYYY-MM-DD HH:MM:SS format  </p>
+   <p> IMPORTANT! Times are in 24 hour format!
+   <p>  EX: Feb 1st 2015 3PM  would be <b> 2015-02-01 15:00:00  </b> for the beginnng of the game  </p>
+   <p>  The end of the game, two hours late would be <b> 2015-02-01 17:00:00  </b>   </p>
+
+
+   </div>
+</div>

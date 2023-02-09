@@ -1,0 +1,22 @@
+<% unless user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-8 col-sm-8 col-xs-10 text-center col-centered">
+            <p class="welcome-to fancy"><span>welcome to</span></p>
+            <p class="fantasy-draft">fantasy draft</p>
+            <hr class="green-line">
+            <div id="sign-in-form">
+              <%= render "devise/sessions/new" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

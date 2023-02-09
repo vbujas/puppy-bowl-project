@@ -1,0 +1,256 @@
+<script type="text/javascript">
+ 
+ 
+
+    <% if pup1 !='***' && pup1 > -1 %>
+  
+      draftedpupps[0] =  <%= pup1 %> 
+    <% end %>   
+     <% if pup2 !='***' && pup2 > -1 %>
+  
+      draftedpupps[1] =  <%= pup2 %> 
+    <% end %>  
+     <% if pup3 !='***' && pup3 > -1 %>
+  
+      draftedpupps[2] =  <%= pup3 %> 
+    <% end %>  
+     
+ $(document).ready( function() {
+    // console.log(navigator.userAgent);
+    /* Adjustments for Safari on Mac */
+       console.log(navigator.userAgent)
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Mac') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+         console.log('Safari on Mac detected, applying class...');
+         $('#funtitle').removeClass('funfactwidth');
+         $('#funtitle').addClass('funfactwidth-mac-safari');
+         $('#breedtitle').removeClass('breedwidth');
+         $('#breedtitle').addClass('breedwidth-mac-safari');// provide a class for the safari-mac specific css to filter with
+    }
+     if (navigator.userAgent.indexOf('Mac') != -1 && navigator.userAgent.indexOf('Chrome') != -1) {
+         console.log('Chrome on Mac detected, applying class...');
+         $('#funtitle').removeClass('funfactwidth');
+         $('#funtitle').addClass('funfactwidth-mac-chrome');
+         $('#breedtitle').removeClass('breedwidth');
+         $('#breedtitle').addClass('breedwidth-mac-chrome');  
+    }
+});
+ </script>
+ <style type="text/css">
+.col-c{
+    float: none;
+    margin: 0 auto;
+}
+
+.breedwidth { width:83px;}
+.breedwidth-mac-chrome { width:90px;}
+.breedwidth-mac-safari { width:88px;}
+.funfactwidth { width:90px; }
+.funfactwidth-mac-safari { width:96px; }
+.funfactwidth-mac-chrome { width:98px; }
+
+
+</style>
+<div class="container">
+  <div class="row">
+    <!-- <div class="col-md-12"> -->
+      <% if user_signed_in? %>
+      <div class="col-md-12 col-sm-12 col-xs-12 nopadding" style="height:100%; position:relative;">
+      <div id="user_id" style="display:none"><%= current_user.id %></div>
+       <div id="div-arr-left" class="col-md-1 col-sm-1 col-xs-1 nopadding fullheight">  
+      <span id="prev" class="fa fa-chevron-left arrow-left"></span>
+      </div>
+    
+    <!-- <div class="row"> -->
+      <div class="col-md-10 col-sm-10 col-xs-10 nopadding" style="height:100%; position:relative;">
+      <div id="puppy_pics_caroussel" class="col-md-5 col-xs-12 col-sm-5 nopadding"  style="min-width:180px;">
+       <% @puppies.each do |puppy| %>
+      <div id="<%= 'pupp_'+ puppy.id.to_s %>"  style="min-height:380px;" class="col-md-12 nopadding hidden pupimagediv"> 
+   <%  bigpics = Array.new   
+       puppy.big_pic == nil ? bigpics[0] = 'pets/Bubba1.png' : bigpics = puppy.big_pic.split(',') %>
+       <% bigpics.each_with_index do |bp, index| %>
+       <% opacity = '' %>
+       <% index == 0 ? opacity = '' :  opacity = 'opacity:0' %>
+    <%= image_tag   bp, id:"big_pic_" + puppy.id.to_s + "_" + index.to_s, class: "img-responsive" , style: "position:absolute;top:0px;left:0px;right:0px;bottom:0px;margin:auto;" +  opacity %>
+       <% end %>
+     </div>
+       <% end %>
+      </div>
+
+      <div  class="col-md-7 col-xs-12 col-sm-7 nopadding">
+      <div id="puppy_sheet_caroussel" class="col-md-11 col-xs-12 col-sm-11 transition-left nopadding" align="left">
+       <% @puppies.each do |puppy| %>
+       <div class="sheet hidden">
+         <div id="name_<%= puppy.id.to_s %>" class="row pupname nopadding"> <%= puppy.name %> </div>
+         <div class="row team-caroussel nopadding" align="left">Team</div>
+         <div class="row nopadding"> 
+           <% if  puppy.team_name == 'Ruff' %>
+          <%= image_tag "ruff.png", class: "img-responsive team-pic" %>
+          <% else %>
+          <%= image_tag "fluff.png", class: "img-responsive team-pic" %>
+          <% end %>
+          </div>
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <div id="breedtitle"  class="pupinfo-white breedwidth" style="float:left;">BREED(S):</div>
+             <div id="breedtext" class="pupinfo-yellow" style="float:left;"><%= puppy.breed %></div>
+             </div> 
+           </div>
+
+           <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">SEX: </span>
+             <span class="pupinfo-yellow"><%= puppy.sex %></span>
+             </div> 
+           </div>
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <span class="pupinfo-white">AGE: </span>
+             <span class="pupinfo-yellow"><%= puppy.age %></span>
+             </div> 
+           </div>
+
+          <div class="row nopadding">
+             <div class="col-md-12 col-xs-12 col-sm-12  left-block nopadding">
+             <div id="funtitle" class="pupinfo-white funfactwidth" style="float:left;">FUN FACT: </div>
+             <div id="funtext" class="pupinfo-yellow" style="float:left;" ><%= puppy.fun_fact %></div>
+             </div> 
+           </div>
+
+           <div id="thumb_<%= puppy.id.to_s  %>" style="display:none;"><%= puppy.pic %></div>
+           <div class="draftthis" align="left">
+            <%= image_tag "draft_this_button.png", :'data-alt-src' => "assets/draft_this_button_hover.png", class: "img-responsive left-block shadowed pointer draftbutton", id:  puppy.id.to_s %>
+           </div>
+       </div>
+         <% end %>
+       </div>
+      <!-- </div> -->
+        </div>
+       </div>
+           <div id="div-arr-right" class="col-md-1 col-xs-1 col-sm-1 nopadding fullheight">  
+      <span id="next" class="fa fa-chevron-right arrow-right"></span>
+        </div>
+        </div>
+       
+      <div class="col-md-12 col-xs-12 col-sm-12 see-all nopadding" align="right">
+        <a href="/edit">see all the pups<%= image_tag "see-all.png", class: "img-responsive see-all-img" %></a>
+      </div>
+      <div class="col-md-12 col-xs-12 col-sm-12" style="padding-bottom:35px; padding-top:0px; padding-left:0px; padding-right:0px">
+      <hr class="yellow-rule" >
+       <hr class="yellow-rule" >
+       </div> 
+        <div class="col-md-10 col-sm-10 col-xs-12 nopadding" align="center">
+       <div class="col-md-4 col-sm-4 col-xs-12 " style="margin-right:0px;">
+       <div class="col-md-12 col-xs-12 col-sm-12 nopadding your-team"  align="center"> YOUR TEAM </div>
+       <div class="col-md-12 col-xs-12 col-sm-12 nopadding"  align="center" > 
+        <div class="col-md-3 col-xs-4 col-sm-3 nopadding" style="padding-left:15px">
+         <hr class="small-rule-choose" align="right"> 
+         </div>
+        <div class="col-md-6  col-sm-6 col-xs-4 nopadding pacifico-choose"> 
+         choose 3
+          </div>
+        <div class="col-md-3  col-sm-3 col-xs-4 nopadding" style="padding-right:15px">
+         <hr class="small-rule-choose" align="left"> 
+         </div>
+       </div>
+        <div class="col-md-12  col-sm-12 col-xs-12 choosemore" id="choosemore" align="center" > Choose 3 more </div>
+        </div>
+
+         <div id="draft-thumbs-div" class="col-md-8  col-sm-8 col-xs-12 nopadding" >
+       <div class="nopadding maxwdraft" style="display:inline-block"  align="center"> 
+         <div id="thumb_div_1" class="thumb_div">
+         <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_1" %> 
+         <div id="remove_div_1" class="pup_overlay_draft  no_op" align="center">
+         <%= image_tag "remove.png", class: "img-responsive pointer", id: "remove_1" %> 
+         </div>
+         </div>    
+         <div class="maxwdraft puppy-name-team" id="pupp_thumb_name_1" align="center">   </div>
+        </div>
+
+       <div class=" nopadding maxwdraft" style="display:inline-block" align="center"> 
+         <div id="thumb_div_2" class="thumb_div">
+        <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_2" %> 
+            <div id="remove_div_2" class="pup_overlay_draft  no_op" align="center">
+         <%= image_tag "remove.png", class: "img-responsive pointer", id: "remove_2" %> 
+         </div>
+        </div>
+         <div class="maxwdraft puppy-name-team" id="pupp_thumb_name_2" align="center">  </div>
+        </div>
+
+       <div class="nopadding maxwdraft" style="display:inline-block" align="center">
+         <div id="thumb_div_3" class="thumb_div">
+         <%= image_tag "empty_pupp.jpg", class: "img-responsive left-block", id: "pupp_thumb_3" %> 
+           <div id="remove_div_3" class="pup_overlay_draft  no_op" align="center">
+         <%= image_tag "remove.png", class: "img-responsive pointer", id: "remove_3" %> 
+         </div>
+         </div>   
+         <div class="maxwdraft puppy-name-team" id="pupp_thumb_name_3" align="center">   </div>
+         </div>
+        </div>
+        </div>
+       <div class="col-md-2 col-xs-12 col-sm-2 nopadding" align="center">
+        <%= image_tag "your_team.png", :'data-alt-src' => "assets/your_team_hover.png", class: "img-responsive right-block shadowed pointer no_op", id: "done_draft", style: "margin-top:16px;" %>
+      </div>
+   
+      <% else %>
+        <p class="welcome text-center">Welcome to the 2015 PUPPY BOWL FANTASY DRAFT!</p>
+        <div class="row">
+          <a href="#myModal" data-toggle="modal" data-target="#myModal">
+            <%= image_tag "create_team_button.png", class: "img-responsive center-block" %>
+          </a>
+        </div>
+        <div class="row">
+          <p class="have-team">Already have a team?<a href="#">EDIT YOUR PICKS</a></p>
+        </div>
+        <div class="row">
+          <%= image_tag "landing_art.png", class: "img-responsive center-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+       
+
+       <script type="text/javascript">
+        function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+
+    });
+}
+
+ preload([
+ <% 
+   @puppies.each do |puppy|  
+   bp = puppy.big_pic
+        
+  if bp == nil  
+
+      bp = ','
+    end
+
+   bpa = bp.split(',');
+   bpa.each do |pic| %>
+  '/assets/<%=    pic.to_s   %>',
+  <% end 
+   end   %> 
+  
+]);
+
+
+
+         $(document).ready(function() {
+          var allpics
+           <% @puppies.each do |puppy| %>
+           allpics = '<%=  puppy.big_pic    %>'
+           var arrayofpics  = allpics.split(',');
+
+            arrofpicarrays.push(arrayofpics);
+            arrofpicsindexes.push(0);
+          // console.log('arr of pics >>> ' +  arrayofpics[0])
+           $('#big_pic_<%= puppy.id.to_s  %>').attr('src', '/assets/' + arrayofpics[0]);        
+           <% end %>
+
+         })
+       </script>
+
+        

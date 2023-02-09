@@ -1,0 +1,152 @@
+@import url("main.css");
+
+.team-score {
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Proxima Nova Bold';
+  text-transform: uppercase;
+}
+
+.you-ranked {
+  font-size: 12px;
+  color: #fff;
+  font-family: 'Myriad Pro';
+  padding-top: 5px;
+  margin: 0;
+}
+
+#ranking .table > thead > tr > th {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#ranking tbody {
+  background: rgba(0, 0, 0, 0.36);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#ranking tbody tr td:first-child {
+  padding-left: 0;
+}
+
+#ranking tbody tr td {
+  color: #fff;
+  text-align: center;
+  font-family: 'Myriad Pro';
+  border-top: 0;
+  padding: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+#ranking table > tbody > tr {
+  padding: 0;
+  padding-left: 0;
+}
+
+#ranking p {
+  font-size: 20px;
+  margin: 12px 0 0 0;
+}
+
+.pups-title, .ranking-title th {
+  font-family: 'Cubano Regular';
+  text-transform: uppercase;
+  color: #faeb4e;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+  padding: 0;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.ranking-score {
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Myriad Pro';
+  font-weight: normal;
+}
+
+.first-tr {
+  border-top: 3px solid #FAEB4E;
+}
+
+.rest-tr {
+  border-top: 1px solid #90ac98;
+}
+
+.ranking td {
+  color: #fff;
+}
+
+.pups-title {
+  font-size: 22px;
+}
+
+.team-stats {
+  -moz-border-radius: 20px;
+  padding: 2px 12px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #fbef49;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #005199;
+}
+
+.team-stats:hover,
+.team-stats:focus {
+  color: #428bca;
+}
+
+.puppy-thumb img {
+  border: 2px solid #00539b;
+}
+
+.ranking-title {
+  margin: 0;
+  padding: 0;
+}
+
+#ranking-title th {
+  padding: 0;
+}
+
+#ranking-score {
+  margin: 0;
+  padding: 0;
+}
+
+#ranking-score th {
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width : 480px) {
+  #ranking p {
+    font-size: 9px;
+  }
+  #ranking th {
+    font-size: 8px;
+  }
+  #ranking .puppy-name p {
+    font-size: 8px;
+  }
+}
+
+@media (max-width : 768px) {
+  #ranking p {
+    font-size: 11px;
+  }
+  #ranking th {
+    font-size: 10px;
+  }
+  #ranking .puppy-name p {
+    font-size: 10px;
+  }
+}
